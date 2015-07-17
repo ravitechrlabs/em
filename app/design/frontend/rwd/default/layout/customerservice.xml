@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <customerservice_index_index>
+	
+		<reference name="root">
+			   <action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+		
+		<reference name="head">
+		 	<action method="addItem"><type>skin_js</type><name>customerservice/tabs.js</name><params/></action>
+			<action method="addItem"><type>skin_css</type><name>customerservice/tabs.css</name><params/></action>
+			<action method="addItem"><type>skin_js</type><name>customerservice/customerservice.js</name><params/></action>
+			<action method="addItem"><type>skin_css</type><name>customerservice/customerservice.css</name><params/></action>
+			<action method="removeItem"><type>skin_js</type><name>customerservice/fancybox/jquery.fancybox-1.3.4.js</name><params/></action>
+			<action method="removeItem"><type>skin_css</type><name>customerservice/fancybox/jquery.fancybox-1.3.4.css</name><params/></action>
+			<action method="addItem"><type>skin_js</type><name>customerservice/jquery.dataTables.js</name><params/></action>
+			<action method="addItem"><type>skin_css</type><name>customerservice/jquery.dataTables.css</name><params/></action>
+		</reference>	
+		
+		
+        <reference name="content">
+            <block type="customerservice/customerservice" name="customerservice" template="customerservice/customerservice.phtml" />
+        </reference>
+		
+    </customerservice_index_index>
+	
+	
+	<customerservice_index_fetchrecent>
+			
+		<reference name="content">
+			 <block type="customerservice/recent" name="root" template="customerservice/recent.phtml" />				
+		</reference>
+		
+	</customerservice_index_fetchrecent>
+	
+	
+	<customerservice_index_fetchsearch>
+					
+		<reference name="content">
+			 <block type="customerservice/search" name="root" template="customerservice/search.phtml" />				
+		</reference>
+		
+	</customerservice_index_fetchsearch>
+	
+	
+	
+	
+	<customerservice_index_fetchcsemail>
+		   <block type="customerservice/csemail" name="root" template="feedback/orderassistance.phtml" />
+	</customerservice_index_fetchcsemail>
+	
+	
+	<customerservice_index_fetchotheremail>
+	
+           <!--<block type="customerservice/csemail" name="root"  output="toHtml"  template="customerservice/csemail.phtml" />-->
+		    
+		   <block type="customerservice/otheremail" name="root" template="feedback/customerassistance.phtml" />
+		
+	</customerservice_index_fetchotheremail>
+
+	
+	
+	<customerservice_index_fetchcsorders>
+	
+		<reference name="content">
+           <block type="customerservice/csorders" name="root"  output="toHtml"  template="customerservice/csorders.phtml" />
+		</reference>
+		   		   				
+	</customerservice_index_fetchcsorders>
+	
+	
+	<customerservice_index_fetchfree>
+		<block type="customerservice/free" name="root"  output="toHtml"  template="customerservice/free.phtml" />
+	</customerservice_index_fetchfree>
+	
+	
+	<customerservice_index_fetchcslogin>
+	
+		<reference name="content">
+           <block type="customerservice/cslogin" name="root"  output="toHtml"  template="customerservice/login.phtml" />
+		</reference>
+		   			
+	</customerservice_index_fetchcslogin>
+	
+	
+	<customerservice_index_cancelorder>
+			    
+		 <block type="customerservice/cancelorder" name="root" template="feedback/cancelorder.phtml" />
+		   				
+	</customerservice_index_cancelorder>
+	
+	
+	<customerservice_index_returnorder>
+		    
+		  <block type="customerservice/returnorder" name="root" template="feedback/returnorder.phtml" />
+		   
+	</customerservice_index_returnorder>
+	
+	
+</layout> 

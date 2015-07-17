@@ -1,0 +1,354 @@
+<div class="form-add">
+  <h2><?php echo $this->__('Write Your Review') ?></h2>
+  <?php if ($this->getAllowWriteReviewFlag()): ?>
+    <form action="<?php echo $this->getAction() ?>" method="post" id="review-form">
+    <?php echo $this->getBlockHtml('formkey'); ?>
+      
+        <?php echo $this->getChildHtml('form_fields_before') ?>
+        
+        
+        <div class="rev-product-info">
+       <!--------------------------- By Ravi ---------------------------------------------------------------------------------------->
+        <span><img id="prodimg" src="<?php echo $this->helper('catalog/image')->init($this->getProductInfo(), 'small_image')->resize(225, 225);?>"></span>        <!-------------------------------------------------------------------------------------------------------------------------->
+       <?php /*?> <h3><?php echo $this->__("You're reviewing:"); ?> <?php */?><h2><span><?php echo $this->htmlEscape($this->getProductInfo()->getName()) ?></span></h2>
+       <!--------------------------- By Ravi ---------------------------------------------------------------------------------------->
+       <h3><span><?php echo $this->htmlEscape($this->getProductInfo()->getDescription()) ?></span></h3>
+       <button class="white">Read more</button>
+               <!-------------------------------------------------------------------------------------------------------------------------->
+		</div>
+         <h4><?php echo $this->__('Choose your product ratings') ?> <em class="required">*</em></h4> 
+    <div class="widgets">      
+	<div class="ratings">
+        <?php if ($this->getRatings() && $this->getRatings()->getSize()): ?>
+                    <span id="input-message-box"></span>
+
+
+          <?php if (Mage::helper('ActiveReviewStars')->getReviewStarMode() == 1) { ?>
+            <table class="data-table" id="product-review-table">
+              <col width="1" />
+              <col width="5" />
+             
+              <tbody>
+              
+                <?php  foreach ($this->getRatings() as $_rating): ?>
+                  <tr>
+                    <td><?php echo $this->escapeHtml($_rating->getRatingCode()) ?><br/>
+                    <span class="value">
+                      <?php foreach ($_rating->getOptions() as $_option): ?>
+                        <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio star" />
+                      <?php endforeach; ?>
+                    </span></td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          <?php }else { ?>
+            <table class="data-table" id="product-review-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <?php foreach ($this->getRatings() as $_rating): ?>
+                      <span class="star-rating-box">
+                        <?php if (Mage::helper('ActiveReviewStars')->showRatingLabel()) { ?>
+                          <span class="star-rating-label"><?php echo $this->escapeHtml($_rating->getRatingCode()) ?>:</span>
+                        <?php } ?>
+
+                        <?php foreach ($_rating->getOptions() as $_option): ?>
+                          <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio star" />
+                        <?php endforeach; ?>
+                      </span>
+                    <?php endforeach; ?>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <?php } ?>
+
+          <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+          <script type="text/javascript">decorateTable('product-review-table')</script>
+        <?php endif; ?>
+      </div>
+      <div class="widget-right">
+      
+      	<div class="slider-block">
+        <p style="text-align:center" for="rangeInput">Move the sliders below to choose a value </p>
+      <p style="text-align:center">
+      for this product
+      </p>
+        <label id="sliderlabel" for="rangeInput">Fit</label>
+        	<div class="slider">
+        		<input type="range" name="rangeInput" id="ran" max="5" min="1" step="1" oninput="updateTextInput(this.value);"><span id="labelchange"><label id="textInput"></label></span>
+        	</div>
+        </div>
+        <div class="recom">
+        	<p> <label >Do you recommend this product?</label><br>
+        		<ul id="recomradio">
+            
+                	<li class="inline"><input type="radio" name="recommend" value="Yes"> Yes</li>
+                	<li class="inline"><input type="radio" name="recommend" value="No"> No</li>
+                
+            	</ul>
+        	</p>
+            </div>
+            
+       </div>
+       </div> 
+       </div>
+        <h4><?php echo $this->__('Leave your review') ?><em class="required">*</em></h4>
+        
+        <fieldset class="rev">
+         
+         			<div class="rev-sum-block">
+                        <label for="summary_field" class="required"><em>*</em><?php echo $this->__('Review Summary') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
+                        </div>
+                  </div>
+                   
+     				<div class="rev-block">
+                        <label for="review_field" class="required"><em>*</em><?php echo $this->__('Your Review') ?></label>
+                        <div class="input-box">
+                            <textarea name="detail" id="review_field" cols="70" rows="9" class="required-entry input-text"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
+                        </div>
+                   </div>     
+       
+         
+          <div class="guidelines">
+                    <h6>Writing Guidelines:</h6>
+                    <p>We want to publish your review, so please:</p>
+                    <ul>
+                        <li>- Keep your review focused on the product</li>
+                        <li>- Avoid writing about customer service;contact us instead if you have issues requiring immediate attention</li>
+                        <li>- Refrain from mentioning competitors or the specific price you paid for the product</li>
+                        <li>- Do not include any personally identifiable information, such as full names</li>
+                    </ul>
+            </div>
+            </fieldset>
+         <h4><?php echo $this->__('Optional: Share relevant photos and video') ?><em class="required">*</em></h4>
+                 <fieldset class="mediarev">                  
+                    <div class="image">
+                  
+                        <label for="reviewimage" class="imagelabel"><!--<em>*</em>--><?php echo $this->__('Upload Your Images') ?></label>
+                        <div class="input-box">
+                            <input type="file" name="reviewimage" id="revfile" class="input-text required-entry"  onchange="pressed()"/>
+                            <label id="fileLabel">No Files Chosen</label>
+                        </div>
+                
+                   
+                    <p><button id="upload" title="<?php echo $this->__('Upload')?>"  ><span><span><?php echo $this->__('Upload')?></span></span></button></p>
+                    </div>
+                    <div class="video">
+                    
+                    <label for="video_field" class="imagelabel"><?php echo $this->__('Link to your video') ?></label>
+                         <div class="input-box">
+                            <input type="text" name="video_field" id="video_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getVideolink()) ?>" />
+                        </div>
+                    <label for="caption_field" class="imagelabel"><?php echo $this->__('Caption') ?></label>
+                         <div class="input-box">
+                            <input type="text" name="caption_field" id="caption_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getCaption()) ?>" />
+                        </div>
+
+                    </div>
+                 <div class="guidelines">
+                    <h6>Media Guidelines:</h6>
+                    <p>We want to publish your review, so please:</p>
+                    <ul>
+                        <li>- Upload media related to the product.</li>
+                        <li>- Confirm you hold the copyright for the media.</li>
+                        <li>- Images must be atleast 533 in width and height.</li>
+                    </ul>
+            </div>
+            </fieldset>
+
+           <h4><?php echo $this->__('Include related products') ?><em class="required">*</em></h4>
+           
+           <fieldset class="relprod">
+           		
+                <div class="relprod-block">
+           				<p>What products do you recommend? Add them to your review.</p>
+           				<p><button id="addprod" title="<?php echo $this->__('Add Product')?>"  ><span><span><?php echo $this->__('Add Product')?></span></span></button></p>
+           		</div>
+           </fieldset>
+           
+            <h4><?php echo $this->__('Your information') ?><em class="required">*</em></h4>
+            
+             <fieldset class="userinfo" >
+             <div class="maindiv">
+                   <div class="lefttf">
+                   		<div class="userinfo-blocks">
+                        	<label for="nickname_field" class="required"><em>*</em><?php echo $this->__("Your Nickname?") ?></label>
+                        	<div class="input-box">
+                            	<input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
+                        	</div>
+                        </div>
+                                     
+                   		<div class="userinfo-blocks">
+                        	<label for="city_field" class="required"><em>*</em><?php echo $this->__("Your city ") ?></label>
+                        	<div class="input-box">
+                            	<input type="text" name="city" id="city_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getCity()) ?>" />
+                        	</div>
+                   		</div>
+                    
+                  
+                       <?php /*?> <label for="email_field" class="required"><em>*</em><?php echo $this->__("Your Email ") ?></label>
+                        <div class="input-box">
+                            <input type="text" name="email" id="email_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getEmail()) ?>" />
+                        </div><?php */?>
+                  
+                    
+                    </div>
+                    
+                    <div class="righttf">
+                    
+                    	<div class="userinfo-blocks">
+                        	<label for="state_field" class="required"><em>*</em><?php echo $this->__("Your State ") ?></label>
+                        	<div class="select-box">
+              	            	<select>
+                            		<option name="state" value="<?php echo $this->escapeHtml($data->getState()) ?>">India</option>
+                                	<option name="state" value="<?php echo $this->escapeHtml($data->getState()) ?>">Singapore</option>
+                            	</select>
+                        	</div>
+                        </div>
+                    
+                     
+                      	<div class="userinfo-blocks">
+                        	<label for="age_field" class="required"><em>*</em><?php echo $this->__("How old are you? ") ?></label>
+                        	<div class="select-box">
+ 								<select>
+                    				<option value=""></option>
+                    				<option value="under18">Under 18</option>
+                    				<option value="18-24">18-24</option>
+                    				<option value="25-34">25-34</option>
+                    				<option value="35-44">35-44</option>
+                    				<option value="45-54">45-54</option>
+                    				<option value="55-64">55-64</option>
+                    				<option value="over65">Over 65</option>
+               		 			</select>                        
+                     		</div>
+                        </div>
+                  
+                     
+                    	<div class="userinfo-blocks">
+                        	<label for="age_field" class="required"><em>*</em><?php echo $this->__("What type of rider are you? ") ?></label>
+                        	<div class="select-box">
+ 								<select>
+                        			<option value=""></option>
+                        			<option value="adventurer">Adventurer</option>
+                        			<option value="kneedragger">Kneedragger</option>
+                        			<option value="dirtmaven">Dirt Maven</option>
+                    			</select>
+                     		</div>
+                        </div>
+                   
+                     
+                     </div>
+                     </div>
+                     <div class="below1">
+                     
+                       	<div class="gender-block">
+                        	<label style="float:left" for="gender_field"><?php echo $this->__("Gender ") ?></label>
+                        	<div  class="radio-box">
+                        		<ul>
+ 									<li class="inline"><input type="radio" name="gender" value="Male"> Male</li>
+               						<li class="inline"><input type="radio" name="gender" value="Female"> Female</li>
+                       			<ul>
+                     		</div>
+                        </div>
+             
+                     	<div class="checkbox-block">
+                     		<input type="checkbox" id="check1" onClick="doThis()" name="email" value="post"> Please send me an email when my review is posted<br>
+                	 		<input type="checkbox" id="check2" onClick="doThis()" name="email" value="comment"> Please send me an email when someone comments on my review<br>
+                        </div>
+                        
+                      	<div id="email-block" class="email-block">
+                	 		<label name="email" class="required"><em>*</em>Your Email</label><br>
+                	 		<input type="email" name="email" class="input-text required-entry">
+                      	</div>
+                        
+                     </div>
+                     
+                    </div>
+                     </fieldset>
+                     <h4><?php echo $this->__('Add additional feedback to customer service') ?><em class="required">*</em></h4>
+                     
+                     <fieldset class="revfeedback">
+                    
+                     	<label for="customer_field" name="crecom"><?php echo $this->__("Would you recommend BIKEFIXR to a friend?") ?></label>
+                        
+                      	<ul id="feed-radio-block">
+                        
+                        	<li class="inline-feed"><input type="radio" name="crecom" value="no">  No</li>
+                    		<li class="inline-feed"><input type="radio" name="crecom" value="maybe">  Maybe</li>
+                    		<li class="inline-feed"><input type="radio" name="crecom" value="definitely">  Definitely</li>
+                        
+                        </ul>
+                     
+          			
+                    
+                   <div id="tellus-block">
+                    	<label for="customer_field" name="why"><?php echo $this->__("Please tell us why?") ?></label><br>
+                    <textarea id="feedarea" name="why" class="input-text" rows="5" cols="100"></textarea>
+                </div>
+               
+                </fieldset>
+       
+      
+      <div class="review-form-buttons">
+      
+      	<div class="review-buttons">
+      		<button title="<?php echo $this->__('Preview')?>"  ><span><span><?php echo $this->__('Preview')?></span></span></button>
+      	</div>
+        
+        <div class="review-buttons">
+        	<button type="submit" title="<?php echo $this->__('Submit Review') ?>" ><span><span><?php echo $this->__('Submit') ?></span></span></button>
+        </div>
+        
+        <div class="review-buttons">
+            <button title="<?php echo $this->__('Cancel')?>"  ><span><span><?php echo $this->__('Cancel')?></span></span></button>
+        </div>
+                
+      </div>
+    </form>
+    <script type="text/javascript">
+      //<![CDATA[
+      var dataForm = new VarienForm('review-form');
+      Validation.addAllThese(
+      [
+        ['validate-rating', '<?php echo $this->__('Please select one of each of the ratings above') ?>', function(v) {
+            var trs = $('product-review-table').select('tr');
+            var inputs;
+            var error = 1;
+
+            for( var j=0; j < trs.length; j++ ) {
+              var tr = trs[j];
+              <?php if (Mage::helper('ActiveReviewStars')->getReviewStarMode() == 2) { ?>
+                if( j >= 0 ) {
+              <?php }else{ ?>
+                  if( j > 0) {
+              <?php } ?>
+                inputs = tr.select('input');
+                for( i in inputs ) {
+                  if( inputs[i].checked == true ) {
+                    error = 0;
+                  }
+                }
+                  
+                if( error == 1 ) {
+                  return false;
+                } else {
+                  error = 1;
+                }
+              }
+            }
+            return true;
+          }]
+      ]
+    );
+      //]]>
+    </script>
+  <?php else: ?>
+    <p class="review-nologged" id="review-form">
+      <?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
+    </p>
+  <?php endif ?>
+</div>

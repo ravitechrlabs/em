@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Bikefixr
+ * @package    Bikefixr_CustomerService
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Bikefixr_CustomerService>
+            <version>0.1.0</version>
+        </Bikefixr_CustomerService>
+    </modules>
+    <frontend>
+        <routers>
+            <customerservice>
+                <use>standard</use>
+                <args>
+                    <module>Bikefixr_CustomerService</module>
+                    <frontName>customerservice</frontName>
+                </args>
+            </customerservice>
+        </routers>
+        <layout>
+            <updates>
+                <customerservice>
+                    <file>customerservice.xml</file>
+                </customerservice>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<customerservice>
+				<use>admin</use>
+				<args>
+					<module>Bikefixr_CustomerService</module>
+					<frontName>customerservice</frontName>
+				</args>
+			</customerservice>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<bikefixr>
+				<children>
+					<customerservice module="customerservice">
+						<title>Customer Service</title>
+						<sort_order>0</sort_order>               
+						<action>customerservice/adminhtml_customerservice</action>
+					</customerservice>
+				</children>
+			</bikefixr>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Bikefixr_CustomerService>
+							<title>CustomerService Module</title>
+							<sort_order>10</sort_order>
+						</Bikefixr_CustomerService>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<customerservice>
+					<file>customerservice.xml</file>
+				</customerservice>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <customerservice>
+                <class>Bikefixr_CustomerService_Model</class>
+                <resourceModel>customerservice_mysql4</resourceModel>
+            </customerservice>
+            <customerservice_mysql4>
+                <class>Bikefixr_CustomerService_Model_Mysql4</class>
+                <entities>
+                    <customerservice>
+                        <table>customerservice</table>
+                    </customerservice>
+					<object>
+						<table>customerservice_children</table>
+					</object>
+                </entities>
+            </customerservice_mysql4>
+        </models>
+        <resources>
+            <customerservice_setup>
+                <setup>
+                    <module>Bikefixr_CustomerService</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customerservice_setup>
+            <customerservice_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </customerservice_write>
+            <customerservice_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </customerservice_read>
+        </resources>
+        <blocks>
+            <customerservice>
+                <class>Bikefixr_CustomerService_Block</class>
+            </customerservice>
+        </blocks>
+        <helpers>
+            <customerservice>
+                <class>Bikefixr_CustomerService_Helper</class>
+            </customerservice>
+        </helpers>
+    </global>
+</config>

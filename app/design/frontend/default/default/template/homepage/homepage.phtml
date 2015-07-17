@@ -1,0 +1,168 @@
+
+           
+       
+<?php
+			
+		  $collection = Mage::getModel('homepage/homepage')->getCollection();
+                //$collection->setPageSize(5);
+                //$collection->setCurPage(2);
+                $size = $collection->getSize();
+                $cnt = count($collection);	
+				$catid = 0;
+                foreach ($collection as $item) {
+                    $catid = $item->getCategoryId();
+					$homepageid = $item->getHomepageId();
+				
+				    $categoryicon=$item->getCategoryicon();
+					$bannerimage = $item->getBannerimage();
+					$bannertext = $item->getBannertext();
+					$subcategory= $item->getSubcategory();
+					$sub=explode(",",$subcategory);
+					$brands = $item->getBrands();
+					$brand=explode(",",$brands);
+
+					
+                
+				
+			$subcat= $_brands = $category = Mage::getModel('catalog/category'); 
+			$category->load($catid);
+			/*$subcat = Mage::getModel('catalog/category');
+			$_brands = Mage::getModel('catalog/category');*/
+			
+
+	?>       
+   
+   
+
+   <br><br>  
+  <h1><?php echo 'Homepage Id is'. $homepageid; ?></h1>       
+<div class="homepageblock-wrapper" >
+	<div class="homepageblock-innerwrapper" >
+    	
+        <div class="left-part">
+   <!-- Category Label --->
+    		<div class="categorylabel-wrapper">
+            
+            	<div class="categorylabel">
+            		<div class="category-icon">
+                	<a href="<?php echo $category->getUrlPath(); ?>">	<img src="<?php echo Mage::getBaseUrl('media'). DS .'homepage' . DS .$categoryicon; ?>"/> </a>
+                	</div>
+                
+            		<div class="category-label">
+						<?php	echo '<h2 class="category-header">'.$category->getName().'</h2>'; ?>
+                	</div>
+                </div>
+                
+        	</div>
+   <!-- Brands slider ----->
+        	<div class="brandsslider">
+            		<ul class="bxslider">
+                        	<li>
+	 							<?php
+	 			
+										$count=0;
+										foreach($brand as $brandid)
+											{
+					
+												$_brands->load($brandid);
+												if($count<3)
+													{
+														echo '<span class="row-set-'.$count.'"><a href="'.$_brands->getUrlPath().'"><img src="'.$_brands->getImageUrl().'"/></a></span>';
+														$count++;
+													}
+													
+												else{
+														$count=0;echo '</li><li>';
+														echo '<span class="row-set-'.$count.'"><a href="'.$_brands->getUrlPath().'"><img src="'.$_brands->getImageUrl().'"/></a></span>';
+														$count++;
+													}
+					
+												}
+			
+								?>
+        					</li>
+     
+                    	</ul>
+  
+        	</div>
+            
+   <!----Subcategory Links ------->     
+       		<div class="subcategory-links">
+            	<ul>
+            		<?php
+						
+							foreach($sub as $subkey => $subid)
+							{
+								if($subkey%2!=0){ $classid='"sub-odd'; }else { $classid='"sub-even';}
+								$subcat->load($subid);
+								echo '<li class='.$classid.' hell"><a href="'.$subcat->getUrlPath().'">'.$subcat->getName().'</a></li>';
+							
+					
+							}
+					?>
+           		 </ul>
+        	</div>
+            
+            
+        </div>
+        
+        <div class="middle-part">
+   
+            <div class="static-banner" style="background-image:url('<?php echo Mage::getBaseUrl('media'). DS .'homepage' . DS .$bannerimage; ?>'); ">
+            	<div class="banner-text-wrapper">
+                
+                	<?php /****************For making the text opaque**************************/ ?>
+                
+                    	<!-- 13 characters maximum ---> 
+                  	<?php echo '<h1 id="banner-text">'.$bannertext.'</h1>'; ?>  
+               
+                <div class="banner-text"> 
+                		
+            		</div>	
+                
+                
+                <?php /******************for makin the text transparent ************************/ ?>
+                
+                
+                	<?php /*?><div class="banner-text">    
+                    	<!-- 13 characters maximum ---> 
+                  		<?php echo '<h1 id="banner-text">'.$bannertext.'</h1>'; ?>  
+            		</div>	<?php */?>
+        		</div>
+            </div>
+            
+        </div>
+        
+        <div class="right-part">
+        
+        	<div class="subcategory-display"><ul>
+            	 <?php
+				 
+				foreach($sub as $subid)
+				{
+					$subcat->load($subid);
+				
+					
+					/*echo '<li class="subcategory-images"><a href="'.$subcat->getUrl().'"><img src="'.$subcat->getImageUrl().'"/></a></li>';
+										*/
+										
+					
+					echo '<li class="subcategory-images"><a href="'.$subcat->getUrlPath().'"><img src="'.$subcat->getImageUrl().'"/><span class="displayname">' .$subcat->getName(). '</span></a></li>';					
+										
+										
+					
+					}
+			?>       </ul> 	</div>
+            
+        
+            
+        </div>
+    <!----- END OF RIGHT PART DIV--------->
+        
+    </div>
+</div> 
+<br>
+<br>
+
+
+<?php } ?>

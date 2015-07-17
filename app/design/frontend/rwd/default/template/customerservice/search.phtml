@@ -1,0 +1,104 @@
+<?php /**************** Template file for displaying the search form and login button when the user is not logged in *************/ ?>
+
+
+<div class="cslogin">
+	<p  id="cslogin-head">Need Assistance with your order?</p>
+    
+   <div class="cslogin-button">
+    	<a class="fancybox fancybox.ajax" href="<?php  echo $this->getUrl('customerservice/index/fetchcslogin');?>">
+    		<button id="required-login" class="cs-red">
+        		Login
+        	</button>
+    	</a>
+	</div>
+
+</div>
+
+<div class="cs-separator">
+	<div class="or"></div>
+</div>
+
+
+<form id="not-loggedin-search" class="not-loggedin-search"  action="<?php echo $this->getUrl('customerservice/index/fetchfree'); ?>" method="post">
+
+	<p class="line csleft">Enter Your Order Number</p>
+    
+    <div class="cs-search-inputs">
+    <div class="cs-input-container">
+    	<div class="input-line">
+    		
+    		<div class="cs-input-label">
+        		<label>ORDER ID</label>
+        	</div>
+        
+        	<div class="cs-input-text">
+        		<input class="input-text required-entry validate-digits" name="ordnum" type="text" />
+        	</div>
+        
+    	</div>
+    
+    	<div class="input-line">
+    
+    		<div class="cs-input-label">
+        		<label>EMAIL</label>
+        	</div>
+        
+        	<div class="cs-input-text">
+        		<input class="input-text validate-email required-entry" name="csemail" type="text" />
+        	</div>
+        
+    	</div>
+    </div>
+    	<div class="cs-input-button">
+    		<a href="#not-logged-in">
+            	<button  id="cs-search-btn" type="submit" class="cs-red">SELECT</button>
+             </a>
+    	</div>
+    </div>
+</form>
+
+<script type="text/javascript" language="javascript">
+ 
+
+
+</script>
+
+
+<script>
+ myform=new VarienForm('not-loggedin-search',false);
+ 
+
+
+Event.observe('not-loggedin-search', 'submit', function(event) {
+	
+	results=myform.validator.validate();
+	if(results){
+    $('not-loggedin-search').request({
+		onCreate : startLoading,
+     onComplete : stopLoading,
+        onFailure:failureFunc,
+        onSuccess:successFunc
+    });
+    Event.stop(event); // stop the form from submitting
+	}
+});
+
+function successFunc(response){
+   
+     if (200 == response.status){
+        //alert("Call is success");
+    }
+    var container = $('not-logged-in');
+    var content = response.responseText;
+    container.update(content);
+}
+
+function failureFunc(response){
+
+     alert("Could not be loaded. Please try again" );
+    
+}
+
+
+ </script>
+ 

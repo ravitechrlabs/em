@@ -1,0 +1,49 @@
+To add the layered navigation block to your website homepage, please do the following:
+
+1) Go to Admin > CMS > Pages
+
+2) Open home page
+
+3) Remove content from the content field (if needed) or wrap it as shown:
+
+
+<div id="adj-nav-container">
+Content of your page .....
+<div class="adj-nav-progress" style="display:none"><img src="/skin/frontend/default/default/images/adj-nav-progress.gif" /></div>
+</div>
+
+
+4) Open tab "Design" and add (or better replace custom content with) the following code:
+
+
+    <reference name="head">
+        <action method="addCss"><stylesheet>css/adjnavtop.css</stylesheet></action>
+        <action method="addCss"><stylesheet>css/adjnav.css</stylesheet></action> 
+        <action method="addJs"><script>jquery/jquery.min.js</script></action>
+        <action method="addJs"><script>jquery/aitoc.js</script></action>
+        <action method="addJs"><script>jquery/jquery.ba-bbq.min.js</script></action>
+    </reference>
+
+    <reference name="left">
+        <block type="directory/currency" name="currency" before="-" template="directory/currency.phtml" /> 
+        <block type="adjnav/catalog_layer_view_sidebar" name="catalog.adjnav" after="currency" template="adjnav/layer/sidebar.phtml"/>
+    </reference>
+    <reference name="content">
+        <block type="adjnav/catalog_layer_params" name="adjnav.params" before="_" template="adjnav/layer/params.phtml"/>
+        <block type="adjnav/catalog_layer_view_top" name="catalog.adjnav.top" after="adjnav.params" template="adjnav/layer/top.phtml"/>
+    </reference>
+
+4.1) If you use Visualize Your Attributes extension add the following code too:
+
+        <reference name="head">
+            <block type="core/template" name="adjicon_styles" template="adjicon/styles.phtml" />
+            <action method="addCss"><stylesheet>css/adjicon.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/adjtexticon.css</stylesheet></action>
+            <action method="addJs"><script>aitoc/adjicon/rwd/listswatch.js</script></action>
+        </reference>
+
+5) Change template to 2-columns with left sidebar or 3 columns
+
+6) Add necessary products to the all root categories
+
+7) Clear the store cache under System->Cache Management

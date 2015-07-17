@@ -1,0 +1,170 @@
+attribute_id|entity_type_id|attribute_code|attribute_model|backend_model|backend_type|backend_table|frontend_model|frontend_input|frontend_label|frontend_class|source_model|is_required|is_user_defined|default_value|is_unique|note|frontend_input_renderer|is_global|is_visible|is_searchable|is_filterable|is_comparable|is_visible_on_front|is_html_allowed_on_front|is_used_for_price_rules|is_filterable_in_search|used_in_product_listing|used_for_sort_by|is_configurable|apply_to|is_visible_in_advanced_search|position|is_wysiwyg_enabled|is_used_for_promo_rules|_options
+71|4|name|||varchar|||text|Name|||1|0||0|||0|1|1|0|0|0|0|0|0|1|1|1||1|0|0|0|
+72|4|description|||text|||textarea|Description|||1|0||0|||0|1|1|0|1|0|1|0|0|0|0|1||1|0|1|0|
+73|4|short_description|||text|||textarea|"Short Description"|||1|0||0|||0|1|1|0|1|0|1|0|0|1|0|1||1|0|1|0|
+74|4|sku||catalog/product_attribute_backend_sku|static|||text|SKU|||1|0||1|||1|1|1|0|1|0|0|0|0|0|0|1||1|0|0|0|
+75|4|price||catalog/product_attribute_backend_price|decimal|||price|Price|||1|0||0|||2|1|1|1|0|0|0|0|0|1|1|1|simple,configurable,virtual,bundle,downloadable|1|0|0|0|
+76|4|special_price||catalog/product_attribute_backend_price|decimal|||price|"Special Price"|||0|0||0|||2|1|0|0|0|0|0|0|0|1|0|1|simple,configurable,virtual,bundle,downloadable|0|0|0|0|
+77|4|special_from_date||catalog/product_attribute_backend_startdate_specialprice|datetime|||date|"Special Price From Date"|||0|0||0|||2|1|0|0|0|0|0|0|0|1|0|1|simple,configurable,virtual,bundle,downloadable|0|0|0|0|
+78|4|special_to_date||eav/entity_attribute_backend_datetime|datetime|||date|"Special Price To Date"|||0|0||0|||2|1|0|0|0|0|0|0|0|1|0|1|simple,configurable,virtual,bundle,downloadable|0|0|0|0|
+79|4|cost||catalog/product_attribute_backend_price|decimal|||price|Cost|||0|1||0|||2|1|0|0|0|0|0|0|0|0|0|1|virtual,downloadable|0|0|0|0|
+80|4|weight|||decimal|||weight|Weight|||1|0||0|||1|1|0|0|0|0|0|0|0|0|0|1|simple,bundle|0|0|0|0|
+81|4|manufacturer|||int|||select|Manufacturer|||0|1||0|||1|1|1|1|1|0|0|0|0|0|0|1|simple|1|0|0|0|
+82|4|meta_title|||varchar|||text|"Meta Title"|||0|0||0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+83|4|meta_keyword|||text|||textarea|"Meta Keywords"|||0|0||0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+84|4|meta_description|||varchar|||textarea|"Meta Description"|||0|0||0|"Maximum 255 chars"||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+85|4|image|||varchar||catalog/product_attribute_frontend_image|media_image|"Base Image"|||0|0||0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+86|4|small_image|||varchar||catalog/product_attribute_frontend_image|media_image|"Small Image"|||0|0||0|||0|1|0|0|0|0|0|0|0|1|0|1||0|0|0|0|
+87|4|thumbnail|||varchar||catalog/product_attribute_frontend_image|media_image|Thumbnail|||0|0||0|||0|1|0|0|0|0|0|0|0|1|0|1||0|0|0|0|
+88|4|media_gallery||catalog/product_attribute_backend_media|varchar|||gallery|"Media Gallery"|||0|0||0|||1|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+89|4|old_id|||int|||text||||0|0||0|||1|0|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+90|4|group_price||catalog/product_attribute_backend_groupprice|decimal|||text|"Group Price"|||0|0||0|||2|1|0|0|0|0|0|0|0|0|0|1|simple,configurable,virtual,bundle,downloadable|0|0|0|0|
+91|4|tier_price||catalog/product_attribute_backend_tierprice|decimal|||text|"Tier Price"|||0|0||0|||2|1|0|0|0|0|0|0|0|0|0|1|simple,configurable,virtual,bundle,downloadable|0|0|0|0|
+92|4|color|||int|||select|Color|||0|1||0|||1|1|1|1|1|0|0|0|0|0|0|1|simple|1|0|0|0|
+93|4|news_from_date||catalog/product_attribute_backend_startdate|datetime|||date|"Set Product as New from Date"|||0|0||0|||2|1|0|0|0|0|0|0|0|1|0|1||0|0|0|0|
+94|4|news_to_date||eav/entity_attribute_backend_datetime|datetime|||date|"Set Product as New to Date"|||0|0||0|||2|1|0|0|0|0|0|0|0|1|0|1||0|0|0|0|
+95|4|gallery|||varchar|||gallery|"Image Gallery"|||0|0||0|||1|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+96|4|status|||int|||select|Status||catalog/product_status|1|0||0|||2|1|1|0|0|0|0|0|0|1|0|1||0|0|0|0|
+97|4|url_key||catalog/product_attribute_backend_urlkey|varchar|||text|"URL Key"|||0|0||0|||0|1|0|0|0|0|0|0|0|1|0|1||0|0|0|0|
+98|4|url_path|||varchar|||text||||0|0||0|||0|0|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+99|4|minimal_price|||decimal|||price|"Minimal Price"|||0|0||0|||0|0|0|0|0|0|0|0|0|0|0|1|simple,configurable,virtual,bundle,downloadable|0|0|0|0|
+100|4|is_recurring|||int|||select|"Enable Recurring Profile"||eav/entity_attribute_source_boolean|0|0||0|"Products with recurring profile participate in catalog as nominal items."||1|1|0|0|0|0|0|0|0|0|0|0|simple,virtual|0|0|0|0|
+101|4|recurring_profile||catalog/product_attribute_backend_recurring|text|||text|"Recurring Payment Profile"|||0|0||0|||1|1|0|0|0|0|0|0|0|0|0|0|simple,virtual|0|0|0|0|
+102|4|visibility|||int|||select|Visibility||catalog/product_visibility|1|0|4|0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+103|4|custom_design|||varchar|||select|"Custom Design"||core/design_source_design|0|0||0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+104|4|custom_design_from||catalog/product_attribute_backend_startdate|datetime|||date|"Active From"|||0|0||0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+105|4|custom_design_to||eav/entity_attribute_backend_datetime|datetime|||date|"Active To"|||0|0||0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+106|4|custom_layout_update||catalog/attribute_backend_customlayoutupdate|text|||textarea|"Custom Layout Update"|||0|0||0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+107|4|page_layout|||varchar|||select|"Page Layout"||catalog/product_attribute_source_layout|0|0||0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+108|4|category_ids|||static|||text||||0|0||0|||1|0|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+109|4|options_container|||varchar|||select|"Display Product Options In"||catalog/entity_product_attribute_design_options_container|0|0|container1|0|||0|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+110|4|required_options|||static|||text||||0|0||0|||1|0|0|0|0|0|0|0|0|1|0|1||0|0|0|0|
+111|4|has_options|||static|||text||||0|0||0|||1|0|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+112|4|image_label|||varchar|||text|"Image Label"|||0|0||0|||0|0|0|0|0|0|0|0|0|1|0|0||0|0|0|0|
+113|4|small_image_label|||varchar|||text|"Small Image Label"|||0|0||0|||0|0|0|0|0|0|0|0|0|1|0|0||0|0|0|0|
+114|4|thumbnail_label|||varchar|||text|"Thumbnail Label"|||0|0||0|||0|0|0|0|0|0|0|0|0|1|0|0||0|0|0|0|
+115|4|created_at||eav/entity_attribute_backend_time_created|static|||text||||1|0||0|||1|0|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+116|4|updated_at||eav/entity_attribute_backend_time_updated|static|||text||||1|0||0|||1|0|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+117|4|country_of_manufacture|||varchar|||select|"Country of Manufacture"||catalog/product_attribute_source_countryofmanufacture|0|0||0|||2|1|0|0|0|0|0|0|0|0|0|0|simple,configurable,bundle,grouped|0|0|0|0|
+118|4|msrp_enabled||catalog/product_attribute_backend_msrp|varchar|||select|"Apply MAP"||catalog/product_attribute_source_msrp_type_enabled|0|0|2|0||adminhtml/catalog_product_helper_form_msrp_enabled|2|1|0|0|0|0|0|0|0|1|0|1|simple,bundle,configurable,virtual,downloadable|0|0|0|0|
+119|4|msrp_display_actual_price_type||catalog/product_attribute_backend_boolean|varchar|||select|"Display Actual Price"||catalog/product_attribute_source_msrp_type_price|0|0|4|0||adminhtml/catalog_product_helper_form_msrp_price|2|1|0|0|0|0|0|0|0|1|0|1|simple,bundle,configurable,virtual,downloadable|0|0|0|0|
+120|4|msrp||catalog/product_attribute_backend_price|decimal|||price|"Manufacturer's Suggested Retail Price"|||0|0||0|||2|1|0|0|0|0|0|0|0|1|0|1|simple,bundle,configurable,virtual,downloadable|0|0|0|0|
+121|4|tax_class_id|||int|||select|"Tax Class"||tax/class_source_product|1|0||0|||2|1|1|0|0|0|0|0|0|1|0|1|simple,configurable,virtual,downloadable,bundle|1|0|0|0|
+122|4|gift_message_available||catalog/product_attribute_backend_boolean|varchar|||select|"Allow Gift Message"||eav/entity_attribute_source_boolean|0|0||0||giftmessage/adminhtml_product_helper_form_config|1|1|0|0|0|0|0|0|0|0|0|0||0|0|0|0|
+123|4|price_type|||int|||||||1|0||0|||1|0|0|0|0|0|0|0|0|1|0|0|bundle|0|0|0|0|
+124|4|sku_type|||int|||||||1|0||0|||1|0|0|0|0|0|0|0|0|0|0|0|bundle|0|0|0|0|
+125|4|weight_type|||int|||||||1|0||0|||1|0|0|0|0|0|0|0|0|1|0|0|bundle|0|0|0|0|
+126|4|price_view|||int|||select|"Price View"||bundle/product_attribute_source_price_view|1|0||0|||1|1|0|0|0|0|0|0|0|1|0|0|bundle|0|0|0|0|
+127|4|shipment_type|||int||||Shipment|||1|0||0|||1|0|0|0|0|0|0|0|0|1|0|0|bundle|0|0|0|0|
+128|4|links_purchased_separately|||int||||"Links can be purchased separately"|||1|0||0|||1|0|0|0|0|0|0|0|0|1|0|0|downloadable|0|0|0|0|
+129|4|samples_title|||varchar||||"Samples title"|||1|0||0|||0|0|0|0|0|0|0|0|0|0|0|0|downloadable|0|0|0|0|
+130|4|links_title|||varchar||||"Links title"|||1|0||0|||0|0|0|0|0|0|0|0|0|0|0|0|downloadable|0|0|0|0|
+131|4|links_exist|||int|||||||0|0|0|0|||1|0|0|0|0|0|0|0|0|1|0|0|downloadable|0|0|0|0|
+135|4|is_redeemable|||int|||text|"Is Redeemable"|||0|1||0|||2|0|0|0|0|0|0|0|0|0|0|0|giftcard|0|0|0|0|
+136|4|use_config_is_redeemable|||int|||text|"Use Config Is Redeemable"|||0|1||0|||2|0|0|0|0|0|0|0|0|0|0|0|giftcard|0|0|0|0|
+137|4|lifetime|||int|||text|Lifetime|||0|1||0|||2|0|0|0|0|0|0|0|0|0|0|0|giftcard|0|0|0|0|
+138|4|use_config_lifetime|||int|||text|"Use Config Lifetime"|||0|1||0|||2|0|0|0|0|0|0|0|0|0|0|0|giftcard|0|0|0|0|
+139|4|email_template|||varchar|||text|"Email Template"|||0|1||0|||0|0|0|0|0|0|0|0|0|0|0|0|giftcard|0|0|0|0|
+140|4|use_config_email_template|||int|||text|"Use Config Email Template"|||0|1||0|||0|0|0|0|0|0|0|0|0|0|0|0|giftcard|0|0|0|0|
+141|4|allow_message|||int|||text|"Allow Message"|||0|1||0|||0|0|0|0|0|0|0|0|0|0|0|0|giftcard|0|0|0|0|
+142|4|use_config_allow_message|||int|||text|"Use Config Allow Message"|||0|1||0|||0|0|0|0|0|0|0|0|0|0|0|0|giftcard|0|0|0|0|
+143|4|gift_wrapping_available||catalog/product_attribute_backend_boolean|varchar|||select|"Allow Gift Wrapping"|hidden-for-virtual|eav/entity_attribute_source_table|0|1||0|||1|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+144|4|gift_wrapping_price||catalog/product_attribute_backend_price|decimal|||price|"Price for Gift Wrapping"|hidden-for-virtual||0|1||0|||2|1|0|0|0|0|0|0|0|0|0|1|simple,configurable,bundle,giftcard|0|0|0|0|
+150|4|width|||text|||textarea|Width|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0|simple,grouped,configurable|0|0|0|0|
+151|4|homeware_style|||int|||select|"Homeware style"||eav/entity_attribute_source_table|0|1||0|||1|1|0|0|0|0|1|0|0|0|0|0|simple,grouped,configurable|0|0|0|0|Modern;Traditional
+153|4|home_decor_type|||int|||select|"Home & Decor Type"||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|0|0|1|0|0|0|0|0|simple,grouped,configurable,bundle|0|0|0|1|"Books & Music;Electronics;Bed & Bath;Decorative Accents"
+156|4|inchoo_featured_product|||int|||boolean|"Featured product"|||0|1|0|0|||0|1|0|0|0|0|0|0|0|1|0|1||0|0|0|0|
+157|4|fb_product|||int|||boolean|"Featured Product"|||0|1||0|||1|1|0|0|0|0|0|0|0|0|0|1||0|0|0|0|
+158|4|jacket_color|||int|||select|Color||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|"Black/Black/Red;Black/Black/White;Black/Black/Black;Ace;Acid Green;Amazon Green;Anthracite;Black;Black ice;Black Mandarin;Black/Blue;Black/White;Black/White/Red;Black/Yellow;Blue;Blue Irish;Bright Green;Brown;Camel;Camo;Canary;Canteen Green;Castle-Rock;Champagne;Charcoal;Clay;Clear;Coal;Cream;Crusader;Dark Brown;Dark Green;Dark Grey;Dark Gull Grey;Dark navy;Dawn Blue;FB Yellow;Florescent Red;Florescent Yellow;Frosty Grey;Fuschia;Glory;Gold;Green;Grey ;Hi Viz;Hi Viz Yellow;High;High Rise Grey;HIVIZ;Hiviz Yellow;Ice;Irish Blue;Ivory;Kawii Green;Khaki;Light Grey;Magnesium;Mahogany;Marine Blue;Matte Black;Metallic Blue;Neon;Neon Red;Neon Yellow;Olive;Orange;Orchid;OxBlood;Patriot;Pewter;Peyote;Phantom;Phantom Black;Pink;Princess Blue;Purple;Ranger;Red;Red/Black;Reflex;Rise;Safari;Sand;Seven;SIlver;Slate;Smoke;Stealth Black;Steeple Grey;Tarmac;Taupe;Titanium;Tobacco;Vermillion Orange;Vintage Black;White;White/Black/Yellow;Yellow"
+159|4|jacket_size|||int|||select|Size||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|0|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|"32;34;36;38;40;42;44;46;48;50;52;54;56;58;60;62;63;64;66;S;M;L;XS;XL;XL Tall;2XL;2XL Tall;3XL;3XL Tall;4XL;5XL;6XL;LXL;WSM;WMD;WLG;WXL;W2XL;LG Tall;2XS"
+160|4|helmet_color|||int|||select|Color||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|0|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|"Aluminum Silver;Black;Black Frost;Blue;Blue Mirror;Camo;Carbon;Carbon Fiber;Clear;Dark Smoke;Diamond Black;Diamond Blue;Diamond Grey;Diamond White;Digit Grey;Flat Black;Flat White;Fluorescent Yellow;Frost Black;Frost Silver;Gold Mirror;Green;Grey;Grey Frost;Gun Metal;GunMetal Grey;Iridium Blue;Iridium Gold;Iridium Mirror;Iridium Rainbow;Iridium Silver;Italy;Light Smoke;Lime;Matallic Orange;Matte Black;Matte Carbon;Matte Green;Metallic Silver;Multi;Orange;Pearl black;Pink;Primer;Prism Cool Grey;Purple;Purple Mirror;Rainbow;Rainbow Mirror;Red;Silver Frost ;Silver Mirror;Smoke;Stripes;White;White SK-Y 78;Yellow"
+161|4|helmet_size|||int|||select|Size||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|0|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|SM;ML;MS;MD-LG;LG;XS;XS-SM;XS/MD;LG-XL;XL;XL-2XL;2XL;2XL-3XL;2XL/3XL;2XS;2XS-MD;2XS/SM;3XL;12MM;15MM;20MM;25MM;30MM;35MM;40MM;I/10MM;I/12MM;I/5MM;I/7MM;II/10MM;II/12MM;II/5MM;II/7MM;III/10MM;III/12MM;III/5MM;III/7MM;IV/10MM;IV/12MM;IV/5MM;IV/7MM;V/5MM;V/7MM;V/10MM;V/12MM
+162|4|gloves_color|||int|||select|Color||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|0|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|"Balck/Red;Battlescar;Black;Black/Acid Green;Black/Anthracite;Black/Anthracite/Grey;Black/Black;Black/Black/Black;Black/Blue;Black/Blue/White;Black/Charcoal;Black/Flou Yellow;Black/Fluoresent Yellow/White;Black/Green;Black/Grey;Black/Grey/Black;Black/Grey/Red;Black/Hi-Viz ;Black/Hi-Viz Yellow;Black/Ice;Black/Kawi Green/White;Black/Lava Red/Dark Grey;Black/Lava Red/White;Black/Orange;Black/Pink;Black/Red;Black/Red Tracks;Black/Red/Black;Black/Red/Fluo Yellow;Black/Red/White/Blue;Black/Red/Yellow;Black/Safari;Black/Sand;Black/Silver;Black/Silver/Dark Grey;Black/Tan;Black/White;Black/White Decor;Black/White/Anthracite;Black/White/Black;Black/White/Blue;Black/White/Floresent Red;Black/White/Floresent Yellow;Black/White/Green;Black/White/Lava Red;Black/White/Red;Black/White/Yellow;Black/White/Yellow/Red;Black/Yellow;Blue;Blue/Black;Blue/Black/Silver;Blue/Charcoal;Blue/White;Blue/White/Lava Red;Bone;Brown;Camo;Canary;Cool Gray/Blue;Cool Gray/Red;Cool Grey/Black;Cream;Dark Grey;Dark Grey/Black;Desert;Fluo Yellow/Black;Fluoro Yellow;Glory;Gold;Green;Green/Black;Green/Red/White;Green/White;Grey;Grey/Black/Black;Grey/Black/Flouo Yellow;Grey/Black/Silver;Grey/Hi-Viz Yellow;Grey/Red;Gunmetal/Black;Gunmetal/Grey;Gunmetal;Gunmetal/Black/White;Hi-Viz;Hi-Viz Yellow;HI-Viz Yellow/Black;Hi-Viz/Black;Ice/Black/Black;Leopard;Light Blue;Neon Yellow;Olive;Orange;Orange/Black;Orange/White;Oxblood;Pink;Pink/White;Red;Red/Black/Silver;Red/Black/White;Red/Black;Red/Black/Flo Yellow;Red/Charcoal;Red/White;Red/White/Black;Red/White/Green/black;Sand;Sand/Tobacco;Silver;Silver/Black;Silver/Blue;Silver/Red;Stealth Black;Tan;Tobacco;White;White/Acid Green;White/Black;White/Black Tracks;White/Black/Blue;White/Black/Floresent Yellow;White/Black/Gunmetal;White/Black/Pink;White/Black/Red;White/Black/Yellow;White/Blue;White/Blue/Red;White/Green;White/Gunmetal;White/Lava Red/Black;White/Red;White/Red/Black;White/Red/Blue;White/Silver;White/White/Black;Yamaha Blue/Black/White;Yellow;Yellow/Black;Yellow/Black/Silver;Yellow/Black/White"
+163|4|gloves_size|||int|||select|Size||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|0|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|"6;7;7.5;8;8.5;9;9.5;10;11;12;13;SM;MD;LG;XS;2XS;XL;2XL;3XL;4XL;7 (Short);8 (Short);9 (Short);10 (Short);11 (Short);7 (Long);8 (Long);9 (Long);10 (Long);11 (Long)"
+164|4|boots_color|||int|||select|Color||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|0|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|"Anthracite;Anthracite Grey/Fuchsia;Anthracite/Black;Anthracite/Grey;Anthracite/Red;Anthracite/White/Black;Anthracite/Yellow;Black;Black Plastic;Black Vernice/Pink;Black/Anthracite;Black/Black;Black/Black/Anthracite;Black/Black/Black;Black/Black/High Risk Red;Black/Black/Silver;Black/Black/White;Black/Bronze;Black/Floresent Yellow;Black/Fluo Yellow;Black/Graphite;Black/Grey;Black/Grey/Anthracite;Black/Orange;Black/Pink;Black/Red;Black/Red/Fluo Yellow;Black/Silver;Black/White;Black/White/Fluo Green;Black/White/Fluo Yellow;Black/White/Grey;Black/White/Lime;Black/White/Red;Black/White/Yellow;Black/Yellow;Blue;Blue Denim;Blue/Black;Blue/White;Brown;Brown/Gold;Brown/Grey;Camo/Grey;Carbon/Red;Charcoal;Dark Brown;Fuchsia;Grey;Grey/Blue;Grey/Blue/Black/Anthracite;Grey/Green;Grey/Purple;Grey/White;Gun Metal;Hi Viz Yellow/Black;Light Grey/Coral;Off Black;Red;Red/Black;Red/White;Red/White/Black;Sand;Sand/Green;Silver/Anthracite;Silver/Black;Stealth Black;Tan;Tarmac/Tarmac;Titanium;White;White/Black;White/Black/Anthracite;White/Black/Black;White/Black/Floresent Red;White/Black/Red;White/Black/Yellow;White/Blue;White/Grey;White/Hi Viz;White/Red;White/Red Perforated;White/White;Yellow/Red;Black/Grey/Red"
+165|4|boots_size|||int|||select|Size||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|5;5.5;6;6.5;7;7.5;8;8.5;9;9.5;10;10.5;11;11.5;12;12.5;13;13.5;14;14.5;15;35;36;37;38;39;40;41;42;43;44;45;46;47;48;49;50;7-9;10-13;39-40;41-43;44-46;47-48;SM;MD;LG
+166|4|baselayer_color|||int|||select|Color||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|"Anthracite;Balck/Anthracite;Black;Black/Anthracite/Fluo Yellow;Black/Black/Anthracite;Black/Dark Grey/Grey;Grey;Black/Grey;Red;Blue;Dark Grey/Grey;Dark Earth;Silver;Pink;Peridot Green;Scuba Blue;Geranium;White;Plum;Orange;Periwinklw"
+167|4|baselayer_size|||int|||select|Size||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|"SM;MD;LG;SM-MD;XS-SM;MD-LG;LG-XL;LG (Tall);XL;XL (Tall);2XL;2XL (Tall);XL-2XL;2XS;3XL;3XS;2XL-3XL;4XL"
+168|4|pants_color|||int|||select|Color||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|Black
+169|4|pants_size|||int|||select|Size||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|0|0|0|1|simple,configurable|1|0|0|0|28
+170|4|jacket_style||eav/entity_attribute_backend_array|varchar|||multiselect|Material|||1|1||0|||1|1|1|1|1|1|1|0|0|0|0|0|simple,configurable|1|0|0|0|"Gore-Tex;Leather;Leather Jackets;Mesh Jackets;Textile;Textile Jackets"
+171|4|jacket_brand|||int|||select|Brands||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|0|0|0|0|simple,configurable|1|0|0|0|"Alpinestars;Axo;Dainese;DSG;FirstGear;Icon;Joe Rocket;KLIM;R Jays;Rev'IT!;Ronald Sand Design;RS Taichi;Sorpion Exo;Spidi;Tour Master"
+172|4|jacket_riding_style||eav/entity_attribute_backend_array|varchar|||multiselect|"Riding Style"|||1|1||0|||1|1|1|1|1|1|1|0|0|0|0|0|simple,configurable|1|0|0|0|"Adventure Jackets;Citi Jackets;Curiser Jackets;Off-Road Jackets;Sportbike Jackets;Touring Jackets"
+173|4|jacket_weather||eav/entity_attribute_backend_array|varchar|||multiselect|Weather|||1|1||0|||1|1|1|1|1|1|1|0|1|0|0|0|simple,configurable|1|0|0|0|"4-Season Jackets;Summer Jackets;Winter Jackets"
+174|4|jacket_type||eav/entity_attribute_backend_array|varchar|||multiselect|Type|||1|1||0|||1|1|1|1|1|1|1|0|1|0|0|0|simple,configurable|1|0|0|0|"Classic Leather Jackets;High Visibility Jackets;Jersys;Race Leather Jackets;Waterproof Jackets"
+175|4|jacket_part_number|||varchar|||text|"Part Number"|||1|1||0|||1|1|1|0|1|1|1|0|0|0|0|0|simple|1|0|0|0|
+176|4|jacket_video_links|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|0|1|0|0|0|0|0|configurable|0|0|0|0|
+177|4|jacket_gender|||int|||select|Gender||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Female;Male
+178|4|riding_suit_brand|||int|||select|Brands||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|qwer
+179|4|riding_suit_gender|||int|||select|Gender||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|Female;Male
+180|4|riding_suit_color|||int|||select|Color||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|dww
+181|4|riding_suit_type|||int|||select|Type||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|0|1|1|0|1|0|0|1||1|0|0|0|"1-Piece Suits"
+182|4|riding_suit_size|||int|||select|Size||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|12
+183|4|riding_suit_part_number|||varchar|||text|"Part Number"|||1|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+184|4|riding_suit_video_link|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+185|4|pants_brand|||int|||select|Brands||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|sdfsadf
+186|4|pants_material|||int|||select|Material||eav/entity_attribute_source_table|1|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|Leather
+187|4|pants_riding_style||eav/entity_attribute_backend_array|varchar|||multiselect|"Riding Style"|||1|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Street
+188|4|pants_weather||eav/entity_attribute_backend_array|varchar|||multiselect|Weather|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|"4-Season Jackets"
+189|4|pants_type||eav/entity_attribute_backend_array|varchar|||multiselect|Type|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|"Waterproof Pants"
+190|4|pants_part_number|||varchar|||text|"Part Number"|||1|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+191|4|pants_video_links|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+192|4|pants_gender|||int|||select|Gender||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Male;Female
+193|4|gloves_brand|||int|||select|Brands||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|0|0|0|1||1|0|0|0|dwfarw
+194|4|gloves_material||eav/entity_attribute_backend_array|varchar|||multiselect|Material|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Leather
+195|4|gloves_gender|||int|||select|Gender||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Male;Female
+196|4|gloves_riding_style||eav/entity_attribute_backend_array|varchar|||multiselect|"Riding Style"|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|"Road "
+197|4|gloves_weather||eav/entity_attribute_backend_array|varchar|||multiselect|Weather|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Summer
+198|4|gloves_type||eav/entity_attribute_backend_array|varchar|||multiselect|Type|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|"Race Gloves"
+199|4|gloves_part_number|||varchar|||text|"Part Number"|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+200|4|gloves_video_link|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+201|4|boots_brand|||int|||select|Brands||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|zcvzs
+202|4|boots_material||eav/entity_attribute_backend_array|varchar|||multiselect|Material|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|adfws
+203|4|boots_style||eav/entity_attribute_backend_array|varchar|||multiselect|Style|||0|1||0|||1|1|1|1|1|0|1|0|1|0|0|0||1|0|0|0|"Riding Shoes"
+204|4|boots_weather||eav/entity_attribute_backend_array|varchar|||multiselect|Weather|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Waterproof
+205|4|boots_type||eav/entity_attribute_backend_array|varchar|||multiselect|Type|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|GORE-TEX
+206|4|boots_part_number|||varchar|||text|"Part Number"|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+207|4|boots_video_links|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+208|4|boots_gender|||int|||select|Gender||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|Male;Female
+209|4|baselayer_brand|||int|||select|Brands||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|sfgefd
+210|4|baselayer_material||eav/entity_attribute_backend_array|varchar|||multiselect|Material|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|dfvs
+211|4|baselayer_style||eav/entity_attribute_backend_array|varchar|||multiselect|Style|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|"One Piece"
+212|4|baselayer_weather||eav/entity_attribute_backend_array|varchar|||multiselect|Weather|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Summer
+213|4|baselayer_type||eav/entity_attribute_backend_array|varchar|||multiselect|Type|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|GORE-TEX
+214|4|baselayer_part_number|||varchar|||text|"Part Number"|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+215|4|baselayer_video_links|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+216|4|baselayer_gender|||int|||select|Gender||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Male;Female
+217|4|headwear_color|||int|||select|Color||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|thry
+218|4|headwear_size|||int|||select|Size||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|df
+219|4|headwear_brand|||int|||select|Brands||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|fvdf
+220|4|headwear_category||eav/entity_attribute_backend_array|varchar|||multiselect|Category|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Balaclava
+221|4|headwear_style||eav/entity_attribute_backend_array|varchar|||multiselect|Style|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|cv
+222|4|headwear_weather||eav/entity_attribute_backend_array|varchar|||multiselect|Weather|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|"Summer Weather"
+223|4|headwear_type||eav/entity_attribute_backend_array|varchar|||multiselect|Type|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|"High Visibility"
+224|4|headwear_part_number|||varchar|||text|"Part Number"|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+225|4|headwear_video_links|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+226|4|headwear_gender|||int|||select|Gender||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Male;Female
+227|4|socks_color|||int|||select|Color||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|wfer
+228|4|socks_size|||int|||select|Size||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|22
+229|4|socks_brand|||int|||select|Brands||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|efw
+230|4|socks_type||eav/entity_attribute_backend_array|varchar|||multiselect|Type|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|"GORE-TEX "
+231|4|socks_style||eav/entity_attribute_backend_array|varchar|||multiselect|Style|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|dwfw
+232|4|socks_weather||eav/entity_attribute_backend_array|varchar|||multiselect|Weather|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|
+233|4|socks_part_number|||varchar|||text|"Part Number"|||0|1||0|||1|1|1|0|0|1|1|0|0|0|0|0||1|0|0|0|
+234|4|socks_video_links|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+235|4|socks_gender|||int|||select|Gender||eav/entity_attribute_source_table|0|1||0|||1|1|1|0|1|1|1|0|1|0|0|0||1|0|0|0|Male;Female
+236|4|vests_color|||int|||select|Color||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|
+237|4|vests_size|||int|||select|Size||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|
+238|4|vests_brand|||int|||select|Brands||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|
+239|4|vests_material||eav/entity_attribute_backend_array|varchar|||multiselect|Material|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|
+240|4|vests_type||eav/entity_attribute_backend_array|varchar|||multiselect|Type|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|
+241|4|vests_weather||eav/entity_attribute_backend_array|varchar|||multiselect|Weather|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|
+242|4|vests_part_number|||varchar|||text|"Part Number"|||0|1||0|||1|1|1|0|0|1|1|0|0|0|0|0||1|0|0|0|
+243|4|vests_video_links|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|
+244|4|vests_gender|||int|||select|Gender||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|Male;Female
+245|4|protection_color|||int|||select|Color||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|1||1|0|0|0|
+246|4|protection_brand|||int|||select|Brands||eav/entity_attribute_source_table|0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|
+247|4|protection_category||eav/entity_attribute_backend_array|varchar|||multiselect|Category|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|
+248|4|protection_style||eav/entity_attribute_backend_array|varchar|||multiselect|Style|||0|1||0|||1|1|1|1|1|1|1|0|1|0|0|0||1|0|0|0|
+249|4|protection_part_number|||varchar|||text|"Part Number"|||0|1||0|||1|1|1|0|0|1|1|0|0|0|0|0||1|0|0|0|
+250|4|protection_video_links|||varchar|||text|Video|||0|1||0|||1|1|0|0|0|1|1|0|0|0|0|0||0|0|0|0|

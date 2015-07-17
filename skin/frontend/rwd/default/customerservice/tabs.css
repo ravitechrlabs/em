@@ -1,0 +1,104 @@
+div#tabs{
+	/*width:65%;
+	margin:20px auto;
+	font-size:11px;
+	display:inline-block;
+	float:left;*/
+	/*border:solid 1px #232343; */
+	width: 100%;
+margin: 20px auto;
+/*font-size: 11px;*/
+display: inline-block;
+	
+}	
+/* DIV that holds each tab*/
+div.my_tab{
+	/*width:700px;*/
+	margin:0px auto;
+	width:100%;
+		
+}
+	
+/* Title of each tab, used when user don't have Javascript'*/	
+div.my_tab h5{
+	color:#414141;
+	/*border-bottom:solid 1px #cacaca;*/
+		
+}
+	
+/* Tab Bar, created via JS*/
+div#tab-bar{
+/*	padding:0px 0px 0px 10px;
+	margin:0px;
+	height:50px;
+	background:#f1f1FF;
+	border-bottom:solid 1px #414141;
+	margin-bottom:20px;
+	font:normal 12px "Trebuchet MS";*/
+	border-bottom: 1px solid rgb(222, 30, 50);
+margin: 0px 0px 20px;
+font: 12px;
+height: 22px;
+}
+	
+/* Single Tab */
+div#tab-bar div.mt-tab{
+	/*float:left;
+	
+	display:inline;
+	position:relative;
+	text-align:center;*/
+	/*margin:14px 5px -3px 0px;*/
+	/*cursor:pointer;
+	border-top:solid 1px #414141;
+	border-left:solid 1px #414141;
+	border-right:solid 1px #414141;
+	border-bottom:solid 1px #414141;
+	font:normal 13px "Trebuchet MS";
+	width : 50%;
+	height:36px;
+	color:#414141;
+	padding:10px 10px 5px 10px;	*/	
+	
+float: left;
+position: relative;
+cursor: pointer;
+font: 15px;
+width: 33%;
+color: #414141;
+text-align: left;
+border: medium none;
+display: inline-block;
+margin-right: 15px;
+text-transform: uppercase;
+}
+	
+/* Single Tab, when active */
+div#tab-bar div.mt-tab-active{
+	/*float:left;
+	
+	display:inline;
+	text-align:center;
+	margin:14px 5px -5px 0px; */
+/*	cursor:pointer;
+	border-top:solid 1px #414141;
+	border-left:solid 1px #414141;
+	border-right:solid 1px #414141;
+	border-bottom:none;
+	height:36px;
+	color:Black;
+	font-weight:bold;
+	width:50%;
+	padding:10px 10px 5px 10px;	*/
+	cursor: pointer;
+color: #DE1E32;
+width: 33%;
+border: medium none;
+text-align: left;
+float: left;
+display: inline-block;
+margin-right: 15px;
+text-transform: uppercase;
+		
+}
+

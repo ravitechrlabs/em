@@ -1,0 +1,228 @@
+ <?php
+                
+                /*
+                    This shows how to load specific fields from a record in the database.
+                    1) Note the load(15), this corresponds to saying "select * from table where table_id = 15"
+                    2) You can then just use the get(fieldname) to pull specific data from the table.
+                    3) If you have a field named news_id, then it becomes getNewsId, etc.
+                */
+                /*
+                $news = Mage::getModel('homepage/homepage')->load(15);
+                echo $news->getNewsId();
+                echo $news->getTitle();
+                echo $news->getContent();
+                echo $news->getStatus();
+                */
+                
+                /*
+                    This shows an alternate way of loading datas from a record using the database the "Magento Way" (using blocks and controller).
+ 					Uncomment blocks in /app/code/local/Namespace/Module/controllers/IndexController.php if you want to use it.
+
+               */
+                /*
+                $object = $this->getHomepage();
+                echo 'id: '.$object['test_id'].'<br/>';
+				echo 'title: '.$object['title'].'<br/>';
+				echo 'content: '.$object['content'].'<br/>';
+				echo 'status: '.$object['status'].'<br/>';
+                */            
+            
+            
+                /*
+                    This shows how to load multiple rows in a collection and save a change to them.
+                    1) The setPageSize function will load only 5 records per page and you can set the current Page with the setCurPage function.
+                    2) The $collection->walk('save') allows you to save everything in the collection after all changes have been made.
+                */
+                /*
+                $i = 0;
+                
+                $collection = Mage::getModel('homepage/homepage')->getCollection();
+                $collection->setPageSize(5);
+                $collection->setCurPage(2);
+                $size = $collection->getSize();
+                $cnt = count($collection);
+                foreach ($collection as $item) {
+                    $i = $i+1;
+                    $item->setTitle($i);
+                    echo $item->getTitle();
+                }
+
+                $collection->walk('save');
+                */
+                
+                /*
+                    This shows how to load a single record and save a change.
+                    1) Note the setTitle, this corresponds to the table field name, title, and then you pass it the text to change.
+                    2) Call the save() function only on a single record.
+                */
+                /*
+                $object = Mage::getModel('homepage/homepage')->load(1);
+                $object->setTitle('This is a changed title');
+                $object->save();
+				*/
+				
+	?> 
+           
+       
+<?php
+			
+		  $collection = Mage::getModel('homepage/homepage')->getCollection();
+                //$collection->setPageSize(5);
+                //$collection->setCurPage(2);
+                $size = $collection->getSize();
+                $cnt = count($collection);	
+				$catid = 0;
+                foreach ($collection as $item) {
+                    $catid = $item->getCategoryId();
+					$homepageid = $item->getHomepageId();
+				
+				    $categoryicon=$item->getCategoryicon();
+					$bannerimage = $item->getBannerimage();
+					$bannertext = $item->getBannertext();
+					$subcategory= $item->getSubcategory();
+					$sub=explode(",",$subcategory);
+					$brands = $item->getBrands();
+					$brand=explode(",",$brands);
+
+					
+                }
+				
+			$subcat= $_brands = $category = Mage::getModel('catalog/category'); 
+			$category->load($catid);
+			/*$subcat = Mage::getModel('catalog/category');
+			$_brands = Mage::getModel('catalog/category');*/
+			
+
+	?>       
+   
+   
+
+  <br><br>          
+<div class="homepageblock-wrapper" >
+	<div class="homepageblock-innerwrapper" >
+    	
+        <div class="left-part">
+   <!-- Category Label --->
+    		<div class="categorylabel-wrapper">
+            
+            	<div class="categorylabel">
+            		<div class="category-icon">
+                	<a href="<?php echo $category->getUrlPath(); ?>">	<img src="<?php echo Mage::getBaseUrl('media'). DS .'homepage' . DS .$categoryicon; ?>"/> </a>
+                	</div>
+                
+            		<div class="category-label">
+						<?php	echo '<h2 class="category-header">'.$category->getName().'</h2>'; ?>
+                	</div>
+                </div>
+                
+        	</div>
+   <!-- Brands slider ----->
+        	<div class="brandsslider">
+            		<ul class="bxslider">
+                        	<li>
+	 							<?php
+	 			
+										$count=0;
+										foreach($brand as $brandid)
+											{
+					
+												$_brands->load($brandid);
+												if($count<3)
+													{
+														echo '<span class="row-set-'.$count.'"><a href="'.$_brands->getUrlPath().'"><img src="'.$_brands->getImageUrl().'"/></a></span>';
+														$count++;
+													}
+													
+												else{
+														$count=0;echo '</li><li>';
+														echo '<span class="row-set-'.$count.'"><a href="'.$_brands->getUrlPath().'"><img src="'.$_brands->getImageUrl().'"/></a></span>';
+														$count++;
+													}
+					
+												}
+			
+								?>
+        					</li>
+     
+                    	</ul>
+  
+        	</div>
+            
+   <!----Subcategory Links ------->     
+       		<div class="subcategory-links">
+            	<ul>
+            		<?php
+						
+							foreach($sub as $subkey => $subid)
+							{
+								if($subkey%2!=0){ $classid='"sub-odd'; }else { $classid='"sub-even';}
+								$subcat->load($subid);
+								echo '<li class='.$classid.' hell"><a href="'.$subcat->getUrlPath().'">'.$subcat->getName().'</a></li>';
+							
+					
+							}
+					?>
+           		 </ul>
+        	</div>
+            
+            
+        </div>
+        
+        <div class="middle-part">
+   
+            <div class="static-banner" style="background-image:url('<?php echo Mage::getBaseUrl('media'). DS .'homepage' . DS .$bannerimage; ?>'); ">
+            	<div class="banner-text-wrapper">
+                
+                	<?php /****************For making the text opaque**************************/ ?>
+                
+                    	<!-- 13 characters maximum ---> 
+                  	<?php echo '<h1 id="banner-text">'.$bannertext.'</h1>'; ?>  
+               
+                <div class="banner-text"> 
+                		
+            		</div>	
+                
+                
+                <?php /******************for makin the text transparent ************************/ ?>
+                
+                
+                	<?php /*?><div class="banner-text">    
+                    	<!-- 13 characters maximum ---> 
+                  		<?php echo '<h1 id="banner-text">'.$bannertext.'</h1>'; ?>  
+            		</div>	<?php */?>
+        		</div>
+            </div>
+            
+        </div>
+        
+        <div class="right-part">
+        
+        	<div class="subcategory-display"><ul>
+            	 <?php
+				 
+				foreach($sub as $subid)
+				{
+					$subcat->load($subid);
+				
+					
+					/*echo '<li class="subcategory-images"><a href="'.$subcat->getUrl().'"><img src="'.$subcat->getImageUrl().'"/></a></li>';
+										*/
+										
+					
+					echo '<li class="subcategory-images"><a href="'.$subcat->getUrlPath().'"><img src="'.$subcat->getImageUrl().'"width="201px" height="201px"/><span class="displayname">' .$subcat->getName(). '</span></a></li>';					
+										
+										
+					
+					}
+			?>       </ul> 	</div>
+            
+        
+            
+        </div>
+    <!----- END OF RIGHT PART DIV--------->
+        
+    </div>
+</div> 
+
+<br>
+<br>

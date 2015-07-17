@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <example_adminhtml_example_index>
+        <reference name="content">
+            <block type="example/adminhtml_example" name="example" />
+        </reference>
+    </example_adminhtml_example_index>
+</layout>

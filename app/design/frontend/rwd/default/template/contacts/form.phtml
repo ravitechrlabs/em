@@ -1,0 +1,350 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php
+$breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
+// add first item with link
+$breadcrumbs->addCrumb(
+'home',
+ array(
+'label'=>$this->__('Home'),
+'title'=>$this->__('Home'), 
+'link'=>Mage::getBaseUrl()
+)
+);
+// add second item without link
+$breadcrumbs->addCrumb(
+'contact-us-crumb',
+ array(
+'label'=>$this->__('CONTACT US'),
+'title'=>$this->__('CONTACT US')
+)
+);
+echo $breadcrumbs->toHtml();
+?>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+
+<div class="page-title">
+    <h3><?php echo Mage::helper('contacts')->__('Contact Us') ?></h3>
+</div>
+
+<form action="<?php echo $this->getFormAction(); ?>" id="contactform" method="post" class="scaffold-form">
+    <div class="fieldset">
+        <?php /*?><h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Us') ?></h2><?php */?>
+        
+        
+       <!--------------------------- The Form ------------------------------>
+        
+        <div class="contact-form-part">
+        	<!-------------------------------- Left part ---------------------->
+            
+            <div class="contact-form-left">
+            	<ul>
+                	<li class="input-box">
+            	
+                        <input name="name" id="name" placeholder="<?php echo Mage::helper('contacts')->__('NAME') ?>" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                  </li>
+                  
+                  <li class="input-box">
+                  	
+                    	<input name="surname" placeholder="<?php echo Mage::helper('contacts')->__('SURNAME') ?>" id="surname" title="<?php echo Mage::helper('contacts')->__('Surname') ?>" class="input-text" type="text"  />
+        
+                  </li>
+                  
+                  <li class="input-box">
+                  	
+                    	<input name="email" placeholder="<?php echo Mage::helper('contacts')->__('EMAIL') ?>" id="contact-email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+        
+                  </li>
+                  
+                  <li class="input-box">
+                  
+                    	<input name="contact-number" placeholder="<?php echo Mage::helper('contacts')->__('CONTACT NO') ?>" id="contact-number" title="<?php echo Mage::helper('contacts')->__('Contact Number') ?>" class="input-text" type="text"  />
+
+                  </li>
+                  
+                  <li class="input-box">
+                  
+                    	<input name="subject" placeholder="<?php echo Mage::helper('contacts')->__('SUBJECT') ?>" id="contact-subject" title="<?php echo Mage::helper('contacts')->__('Subject') ?>" class="input-text" type="text"  />
+
+                  </li>
+                  
+                  <li class="input-box">
+                  
+                  	    <textarea name="contact-message" placeholder="<?php echo Mage::helper('contacts')->__('YOUR MESSAGE') ?>" id="contact-message" title="<?php echo Mage::helper('contacts')->__('Message') ?>" class="required-entry input-text" cols="40" rows="3"></textarea>
+	
+                        
+                  </li>
+                 
+                  
+                 </ul>
+                                                          
+            </div>
+        
+        	<!--------------------------------- Right part Location--------------------->
+            
+            <div class="location-right">
+           <!-- <iframe id="contact-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.122652895999!2d80.2523134!3d13.027860500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267b65180044b%3A0x89839956d1e22901!2sARAN+Kitchen+World+Private+Limited!5e0!3m2!1sen!2sin!4v1427868344159" width="500" height="500" frameborder="0" ></iframe> -->
+            <iframe id="contact-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1272914740543!2d80.253021!3d13.027564999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267b651d74e85%3A0x89e4e8ebec75f54f!2sTECH+R+LABS!5e0!3m2!1sen!2sin!4v1427970143277" width="500" height="500" frameborder="0" ></iframe>
+            </div>
+        
+        
+        </div>
+        
+
+        
+        <!---------------------------The send button ------------------------->
+        
+        <div class="send-part">
+        	<p>Read our <a href="http://www.google.com">Privacy Policy</a></p>
+            
+            <p>
+            	<input type="checkbox" value="1"> Please check this box to receive updates bikefixr news and products
+        	</p>
+        	<div class="contact-buttons-set">
+        		<input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        		<button id="contact-send" type="submit" title="<?php echo Mage::helper('contacts')->__('Send') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Send') ?></span></span></button>
+   			</div>
+        
+        </div>
+        
+                  
+        
+        <!---------------------------- Some contact info para -------------------->
+        
+        <div class="contact-info-part">
+        	<div class="contact-info-section-header">
+            	<p>Website and online order enquiries</p>
+            </div>
+            
+            <div class="contact-info-section-content">
+            	<p>If you need any assistance with placing an order or have a question, our web customer service</p>
+                <p>team is on hand to assist you. Please take a moment to either complete the form above or call</p>
+                 <p>   the team on <tel>+44 (0) 330 333 4290</tel>*.</p>
+                    
+                    
+                   <br><br><p> Mon - friday: 08:30 - 17:30 GMT </p><br><br>
+                    
+                    
+                    <p>Indian landline users will be charged at the rate of a local call. Calls from mobiles will be</p>
+                   <p> charged according to the rate of your network service provider.</p>
+            </div>
+            
+        
+        </div>
+        
+        
+         
+        
+        <!----------------------------- Post Script ----------------------------->
+        
+        
+        <div class="postscript">
+        	<p> You may also find an answer to your query on our <a href="http://localhost:8888/em/faq">FAQ</a> page.
+        </div>
+        
+        
+        
+        
+        <!--------------------------------- The End ----------------------------->
+     </div>
+        
+        
+        
+    </div>
+    
+</form>
+
+<style>
+			.fieldset{
+				width:100%;
+				}
+				
+			.contact-form-part{
+				width:100%;
+				display:inline-block;
+				}
+				
+			.contact-form-left{
+				width:57%;
+				float:left;
+				}
+				
+			.location-right{
+				width:43%;
+				float:left;
+				}
+				
+			.send-part{
+				margin-top: 30px;
+				margin-bottom:15px;
+				width: 100%;
+				float: left;
+				display: inline-block;
+				padding:10px;
+				}
+				
+			.contact-info-part{
+				width: 100%;
+				display: inline-block;
+				float: left;
+				margin-top: 5px;
+				padding: 10px;
+				}
+			
+			.contact-info-section-header{
+				border-bottom: 1px solid #DDDDDB;
+				}
+				
+			.contact-info-section-content{
+				margin-top: 10px;
+				padding-top: 20px;
+				border-bottom: 1px solid #DDDDDB;
+				padding-bottom: 20px;
+				margin-bottom: 5px;
+				}
+				
+			.postscript{
+				padding:10px;
+				}
+				
+			#contactform p{font-size: 15px; text-transform:uppercase; color:#848484;}
+				
+					
+			.input-box input{
+				border:none !important;
+				outline:none !important;
+				height: 70px;
+				width:100%;
+				}		
+			.input-box{
+				border-bottom:2px solid #eee;
+				border-left:2px solid #eee;
+				border-right:2px solid #eee;
+				}
+			.input-box:nth-child(1){
+				border-top:2px solid #eee;
+				}
+			.input-box textarea{
+				resize:none;
+				width: 99%;
+				max-width: 99%;
+				border: none;
+				height:126px;
+				padding:9px;
+				}	
+			.input-box textarea:focus {
+    			border: none;
+				}
+			
+			#contact-map{
+				border: 2px solid #eee;
+				padding:10px;
+				margin-left:17px;
+				}	
+			
+			#contact-send{
+				border: medium none;
+				color: #FFF !important;
+				font-family: "Roboto-Light",sans-serif !important;
+				font-size: 15px;
+				height: 35px;
+				width: 200px;
+				letter-spacing: 0.3px;
+				border-radius: 3px;
+				background-color: #ee203e;
+			}
+			.contact-buttons-set{
+				margin-top: 20px;
+				padding-top: 20px;
+				margin-left: 240px;
+				padding-left: 240px;
+				}
+				
+			#contactform a{
+				color:#E80532;
+				text-decoration:underline;
+				}
+				
+			.contact-us-crumb > *{
+	color:#E80530 !important;
+	}
+.breadcrumbs span{
+	color:red;
+	}
+
+          </style>
+        
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+</script>
+
+<?php /*?>
+
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+        <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    
+                    <div class="input-box">
+                        <input name="name" id="name" placeholder="<?php echo Mage::helper('contacts')->__('Name') ?>" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    
+                    <div class="input-box">
+                        <input name="email" placeholder="<?php echo Mage::helper('contacts')->__('Email') ?>" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                <div class="input-box">
+                    <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="tel" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+    </div>
+    
+    
+    
+    <?php */?>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customerservice_adminhtml_customerservice_index>
+        <reference name="content">
+            <block type="customerservice/adminhtml_customerservice" name="customerservice" />
+        </reference>
+    </customerservice_adminhtml_customerservice_index>
+</layout>

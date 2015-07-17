@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Bikefixr
+ * @package    Bikefixr_Homepage
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Bikefixr_Homepage>
+            <version>0.1.0</version>
+        </Bikefixr_Homepage>
+    </modules>
+    <frontend>
+        <routers>
+            <homepage>
+                <use>standard</use>
+                <args>
+                    <module>Bikefixr_Homepage</module>
+                    <frontName>homepage</frontName>
+                </args>
+            </homepage>
+        </routers>
+        <layout>
+            <updates>
+                <homepage>
+                    <file>homepage.xml</file>
+                </homepage>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<homepage>
+				<use>admin</use>
+				<args>
+					<module>Bikefixr_Homepage</module>
+					<frontName>homepage</frontName>
+				</args>
+			</homepage>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<homepage module="homepage">
+				<title>Homepage</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="homepage">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>homepage/adminhtml_homepage</action>
+					</items>
+				</children>
+			</homepage>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Bikefixr_Homepage>
+							<title>Homepage Module</title>
+							<sort_order>10</sort_order>
+						</Bikefixr_Homepage>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<homepage>
+					<file>homepage.xml</file>
+				</homepage>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <homepage>
+                <class>Bikefixr_Homepage_Model</class>
+                <resourceModel>homepage_mysql4</resourceModel>
+            </homepage>
+            <homepage_mysql4>
+                <class>Bikefixr_Homepage_Model_Mysql4</class>
+                <entities>
+                    <homepage>
+                        <table>homepage</table>
+                    </homepage>
+                </entities>
+            </homepage_mysql4>
+        </models>
+        <resources>
+            <homepage_setup>
+                <setup>
+                    <module>Bikefixr_Homepage</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </homepage_setup>
+            <homepage_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </homepage_write>
+            <homepage_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </homepage_read>
+        </resources>
+        <blocks>
+            <homepage>
+                <class>Bikefixr_Homepage_Block</class>
+            </homepage>
+        </blocks>
+        <helpers>
+            <homepage>
+                <class>Bikefixr_Homepage_Helper</class>
+            </homepage>
+        </helpers>
+    </global>
+</config>

@@ -1,0 +1,936 @@
+/*********************************Issues and Subissues*********************/
+
+.subIssues {
+  border: 2px solid #EEE;
+  border-top: none;
+  height: 330px;
+  overflow: scroll;
+  padding-left: 55px;
+  list-style: outside none number; 
+}
+
+.step-1 {
+  float: left;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.issues {
+  float: left;
+  display: inline-block;
+  width: 66%;
+}
+
+.cscategory {
+  display: inline-block;
+  width: 100%;
+  float: left;
+  overflow: hidden;
+  height: 385px;
+}
+
+.csdropdown {
+  border-bottom: 2px solid #eee;
+  border-left: 2px solid #eee;
+  border-right: 2px solid #eee;
+  border-top: 1px solid #eee;
+  height: 55px;
+  padding: 15px;
+}
+
+.csdropdown:hover {
+  cursor: pointer;
+}
+
+.cs-parent-name{
+  display: inline-block;
+  float: left;
+}
+
+.cs-parent-icon {
+    background: url("images/icons_customer care.png") no-repeat scroll -526px -196px transparent;
+    width: 15px;
+    height: 20px;
+    float: right;
+    display: inline-block;
+}
+
+.cschildren {
+/*border-bottom:2px solid #eee;
+border-left:2px solid #eee;
+border-right:2px solid #eee;
+height:55px;
+padding:18px;
+border-color:#F90;*/
+  margin-top: 23px;
+}
+
+.cschildren:hover > h5,.cschildren:hover {
+  color: rgb(222, 30, 50);
+  cursor: pointer;
+}
+
+.csdropdown:nth-child(1) {
+  border-top: 2px solid #eee;
+}
+
+.chosen-parent {
+  float: left;
+  margin: 0;
+  padding: 15px 15px 15px 15px;
+  /*background-color: #D3D3D3;*/
+  background-color: #EEE;
+  border-radius: 1px;
+  text-transform: uppercase;
+}
+
+.chosen-parent:after {
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  /*border-left-color: #D3D3D3;*/
+  border-left-color: #EEE;
+  border-width: 25px;
+  margin: -14px 0px 0px 15px;
+}
+
+.chosen-child {
+  float: left;
+  margin: 0;
+  margin-left: 70px;
+  padding: 15px 15px 15px 15px;
+}
+
+.chosen-issue {
+/*border: 1px solid #D3D3D3;*/
+  float: left;
+  border: 2px solid #EEE;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+/*padding: 15px 15px 15px 15px;*/;
+}
+
+.chosen-icon{
+	  background: url("images/icons_customer care.png") no-repeat scroll -526px -196px transparent;
+    width: 15px;
+    height: 20px;
+    float: right;
+    display: inline-block;
+	margin: 15px 0px 0px 15px;
+	padding: 15px;
+}
+
+
+#chosen-order-issue{
+	display:none;
+}
+
+#chosen-other-issue{
+	display:none;
+}
+
+.step-2{
+	float:left;
+	width:100%;
+}
+
+/**********************FAQ Style ***********************/
+
+.faq-section {
+  width: 32%;
+  float: left;
+  display: inline-block;
+/*border: 1px solid black;*/
+  border: 2px solid #EEE;
+  margin-left: 19px;
+  height: 385px;
+}
+
+.faq-header {
+  text-align: center;
+  height: 53px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #EEE;
+  padding-top: 18px;
+}
+
+.faq-header a:hover {
+  color: #E1192B;
+}
+
+.faq-wrapper {
+  margin: 9px;
+  height: 81%;
+  overflow: scroll;
+}
+
+.faq-ans, .child-faq-ans, .faq-ans-other, .child-faq-ans-other {
+  font-size: 13px;
+}
+
+
+.qa-wrapper {
+  border-bottom: 2px solid #EEE;
+  margin-bottom: 10px;
+}
+
+.qa-wrapper:last-child {
+  border: none;
+}
+
+.child-faq {
+  width: 100%;
+  float: left;
+/*border: 1px solid #D12B2B;*/
+/*margin: 14px;*/;
+display:none;
+}
+
+.csquestion {
+  float: left;
+  width: 100%;
+  display: inline-block;
+}
+
+.parent-faq {
+  width: 100%;
+  float: left;
+/*border: 1px solid black;*/
+/*margin: 14px;*/;
+display:none;
+}
+
+
+
+
+
+/*********************** Login and Search functionality *****************************/
+
+
+.cslogin {
+  width: 100%;
+  float: left;
+  display: inline-block;
+  font-size: 17px;
+  margin-top: 25px;
+}
+
+.cslogin-button {
+  text-align: center;
+}
+
+.cs-red {
+background-color: #DE1E32;
+width: 120px;
+height: 33px;
+text-align: center;
+color: #FFF;
+border: 1px none #DE1E32 !important;
+text-transform: uppercase;
+font-size: 14px;
+border-radius: 2px;
+   /* box-shadow: 1px 1px 2px 1px black; */;
+}
+
+.cs-separator {
+  border-top: 1px solid #E5E5E5;
+  width: 100%;
+  display: inline-block;
+  float: left;
+  margin: 60px 0px 30px;
+  text-align: center;
+}
+
+.csleft {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.or {
+  background: url("images/icons_customer care.png") no-repeat scroll -261px -327px transparent;
+  width: 33px;
+  height: 31px;
+  position: relative;
+  margin-top: -16px;
+  display: inline-block;
+}
+
+#not-logged-in{
+	float: left;
+width: 100%;
+display: inline-block;
+}
+
+#not-loggedin-search {
+  width: 100%;
+  display: inline-block;
+  float: left;
+}
+
+.cs-search-inputs {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.input-line {
+  float: left;
+  width: 50%;
+}
+
+.cs-input-label {
+  text-align: left;
+  margin-left: 53px;
+  width: 100%;
+  float: left;
+}
+
+.cs-input-label label {
+  font-size: 16px;
+}
+
+.cs-input-button {
+  float: left;
+  width: 100%;
+  margin-top: 40px;
+}
+
+#csreturn{
+	background-color: #DE1E32;
+width: 215px;
+height: 33px;
+text-align: center;
+color: #FFF;
+border: 1px none #DE1E32 !important;
+text-transform: uppercase;
+font-size: 14px;
+border-radius: 2px;
+}
+
+#cs-return{
+	width: 100%;
+display: inline-block;
+float: left;
+text-align: center;
+padding-top: 60px;
+}
+
+.cs-failed-search{
+	    border: 2px solid rgb(251, 17, 61);
+    background-color: rgb(238, 238, 238);
+    color: rgb(222, 30, 50);
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 7px;
+	margin-top:40px;
+}
+
+.cs-input-container{
+float: left;
+width: 100%;
+display: inline-block;
+height: 110px;
+}
+/****************************************Order Related Styling *************************************************/
+
+#logged-in{
+	width: 100%;
+float: left;
+display: inline-block;
+}
+
+
+.ordered-items {
+  width: 100%;
+  display: inline-block;
+  float: left;
+}
+
+.order {
+  width: 100%;
+  float: left;
+  border-top: 2px solid rgb(238, 238, 238);
+  border-bottom: 2px solid rgb(238, 238, 238);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+/*margin-bottom: 15px;*/
+ 
+}
+
+.order-radio {
+  float: left;
+  width: 7%;
+  text-align: center;
+  height: 69px;
+  padding-top: 23px;
+  padding-bottom: 24px;
+  margin-right: 5px;
+  border-right: 1px solid rgb(238, 238, 238);
+}
+
+.order-item-detail {
+  float: left;
+  width: 25%;
+  height: 69px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 5px;
+  border-right: 1px solid rgb(238, 238, 238);
+}
+
+.order-item-image {
+  float: left;
+  height: 100%;
+  width: 24%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.order-item-right {
+ float: left;
+width: 65%;
+text-align: center;
+height: 100%;
+}
+
+.order-item-name {
+float: left;
+width: 100%;
+color: #DE1E32;
+overflow: scroll;
+margin-bottom: 5px;
+height: 40%;
+}
+
+.order-item-price {
+  float: left;
+  width: 100%;
+}
+
+.order-number {
+  float: left;
+  width: 18%;
+  text-align: center;
+  height: 69px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 5px;
+  border-right: 1px solid rgb(238, 238, 238);
+}
+
+.order-number-content {
+  color: #DE1E32;
+  margin-top: 13px;
+}
+
+.ordered-date {
+  float: left;
+  width: 18%;
+  text-align: center;
+  height: 69px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 5px;
+  border-right: 1px solid rgb(238, 238, 238);
+}
+
+.ordered-date-content {
+  margin-top: 13px;
+}
+
+.delivered-date {
+  float: left;
+  width: 18%;
+  text-align: center;
+  height: 69px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 5px;
+  border-right: 1px solid rgb(238, 238, 238);
+}
+
+.delivered-date-content {
+  margin-top: 13px;
+}
+
+.order-status {
+  float: left;
+  width: 18%;
+  text-align: center;
+  height: 69px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-right: 5px;
+}
+
+.order-dropdown {
+  display: inline-block;
+  float: left;
+  width: 100%;
+/*padding: 0px 110px;*/
+/*height: 60px;*/
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.order-dropdown > div {
+/*padding-top:10px;*/
+  float: left;
+  width: 100%;
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.track-order-dropdown {
+  text-transform: uppercase;
+  width: 20%;
+  border-right: 1px solid rgb(238, 238, 238);
+  float: left;
+  text-align: center;
+}
+
+.cancel-order-dropdown {
+  text-transform: uppercase;
+  float: left;
+  width: 20%;
+  border-right: 1px solid #EEE;
+  text-align: center;
+}
+
+.email-us-dropdown {
+  text-transform: uppercase;
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+
+.track-icon {
+   display: inline-block;
+  float: left;
+  background: url('images/icons_customer care.png') no-repeat -186px -193px;
+	width: 13px;
+	height: 17px;
+	margin:2px;
+}
+
+.track-wrapper {
+  padding: 7px 0px 8px;
+}
+
+.track-wrapper a, .cancel-wrapper a, .email-wrapper a, .return-order-dropdown a, .invoice-order-dropdown a {
+  display: inline-block;
+  color: #DE1E32;
+}
+
+.track-wrapper a:hover, .cancel-wrapper a:hover, .email-wrapper a:hover, .return-order-dropdown a:hover, .invoice-order-dropdown a:hover {
+  color: #DE1E32;
+}
+
+.track-text {
+  float: left;
+  left: 11px;
+  position: relative;
+}
+
+.cancel-icon {
+  background: url("images/icons_customer care.png")  no-repeat -273px -221px;
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  float: left;
+  margin-top: 3px;
+}
+
+.cancel-wrapper {
+  padding: 7px 0px 8px;
+  text-align: center;
+}
+
+.cancel-text {
+  float: left;
+  left: 11px;
+  position: relative;
+}
+
+.email-icon {
+  background: url('images/icons_customer care.png') no-repeat -192px -273px;
+  width: 22px;
+  height: 15px;
+  display: inline-block;
+  float: left;
+  margin-top: 3px;
+}
+
+.email-wrapper {
+  padding-top: 5px;
+  padding: 7px 0px 8px 0px;
+}
+
+.email-text {
+  float: left;
+  left: 11px;
+  position: relative;
+}
+
+.invoice-order-dropdown {
+  text-transform: uppercase;
+  float: left;
+  width: 20%;
+  border-right: 1px solid #EEE;
+  text-align: center;
+}
+
+.invoice-wrapper {
+  padding: 7px 0px 8px;
+}
+
+.invoice-text {
+  float: left;
+  left: 11px;
+  position: relative;
+}
+
+.invoice-icon {
+  background: url('images/icons_customer care.png') no-repeat -150px -297px;
+  width: 15px;
+  height: 16px;
+  display: inline-block;
+  float: left;
+  margin-top: 3px;
+}
+
+.return-order-dropdown {
+  text-transform: uppercase;
+  float: left;
+  width: 20%;
+  border-right: 1px solid #EEE;
+  text-align: center;
+}
+
+.return-wrapper {
+  padding: 7px 0px 8px;
+}
+
+.return-text {
+  float: left;
+  left: 11px;
+  position: relative;
+}
+
+.return-icon {
+  background: url('images/icons_customer care.png') no-repeat -255px -273px;
+  width: 15px;
+  height: 17px;
+  display: inline-block;
+  float: left;
+  margin-top: 3px;
+}
+
+#cs-allorders {
+  float: left;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 25px;
+
+}
+
+#all-orders-btn {
+  background-color: #DE1E32;
+  width: 186px;
+  height: 33px;
+  text-align: center;
+  color: #FFF;
+  border: 1px none #DE1E32 !important;
+  text-transform: uppercase;
+  font-size: 17px;
+  border-radius: 2px;
+  
+}
+
+.status-green{
+	color:green;
+}
+
+.status-red{
+	color:#DE1E32;
+}
+
+.status-orange{
+	color:#F93;
+}
+
+/******************************************** Second Tab css *******************/
+.csbutton {
+  display: inline-block;
+  float: left;
+  width: 100%;
+}
+
+#other-email {
+  margin: 20px 425px;
+  width: 140px;
+  
+}
+
+.other-button {
+  text-align: center;
+  color: #FFF;
+  background-color: #DE1E32;
+  border-radius: 2px;
+  padding: 10px;
+  width: 100%;
+}
+
+.csbutton a:hover {
+  text-decoration: none;
+}
+
+.csdisable {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}	
+
+
+
+/********************************************* Customer Service Footer ***************************************************/
+
+.csfooter {
+  width: 100%;
+  margin-top: 30px;
+  padding-top: 30px;
+  display: inline-block;
+}
+
+.cs-contact {
+  width: 100%;
+  float: left;
+  border-top: 1px solid rgb(238, 238, 238);
+  border-bottom: 1px solid rgb(238, 238, 238);
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#cs-call-us {
+  float: left;
+  width: 30%;
+  margin-right: 20px;
+  border-right: 1px solid rgb(238, 238, 238);
+  padding-right: 20px;
+  height: 130px;
+}
+
+#cs-mail-us {
+  float: left;
+  width: 30%;
+  margin-right: 20px;
+  border-right: 1px solid #EEE;
+  padding-right: 20px;
+  height: 130px;
+}
+
+#cs-office {
+  float: left;
+  width: 30%;
+  height: 130px;
+}
+
+
+
+/*************************************** Order Popup CSS **********************************/
+.ordered-items-popup{
+	  width: 100%;
+	  display: inline-block;
+	  float: left;
+	 }
+	 
+ .order-popup{
+/*	 width: 100%;
+	float: left;
+	border-top: 2px solid rgb(238, 238, 238);
+border-bottom: 2px solid rgb(238, 238, 238);
+padding-top: 10px;
+padding-bottom: 10px;
+margin-top: 15px;
+*/
+cursor:pointer;
+/*margin-bottom: 15px;*/
+
+ }
+ 
+ .order-radio-popup{
+
+height: 69px;
+text-align: center;
+border-right: 1px solid #EEE;
+
+width: 7%;
+
+
+ }
+ 
+ .order-item-detail-popup{
+	
+width: 23%;
+height: 69px;
+
+border-right: 1px solid rgb(238, 238, 238);
+ }
+ 
+ .order-item-image-popup{
+	float: left;
+height: 100%;
+width: 24%;
+margin-left: 5px;
+margin-right: 5px;
+ }
+ 
+ .order-item-right-popup{
+	float: left;
+width: 65%;
+text-align: center;
+ }
+ 
+ .order-item-name-popup{
+	 float: left;
+width: 100%;
+color: #DE1E32;
+overflow: scroll;
+height: 25px;
+ }
+ 
+ .order-item-price-popup{
+	 float: left;
+width: 100%;
+padding-top:10px;
+ }
+ 
+ .order-number-popup{
+	
+width: 16.6%;
+text-align: center;
+height: 69px;
+
+
+border-right: 1px solid rgb(238, 238, 238);
+ }
+ 
+ .order-number-content-popup
+ {
+	 color:#DE1E32;
+	 margin-top: 13px;
+	 padding-bottom:9px;
+ }
+ 
+ .ordered-date-popup{
+
+width: 16.6%;
+text-align: center;
+height: 69px;
+border-right: 1px solid rgb(238, 238, 238);
+}
+
+.ordered-date-content-popup{
+	margin-top: 13px;
+}
+
+.delivered-date-popup{
+	
+width: 16.6%;
+text-align: center;
+height: 69px;
+
+
+border-right: 1px solid rgb(238, 238, 238);
+}
+
+.delivered-date-content-popup{
+	margin-top:13px;
+}
+
+.order-status-popup{
+
+width: 16.6%;
+text-align: center;
+height: 69px;
+}
+ 
+.all-csorders-header{
+	float: left;
+width: 100%;
+display: inline-block;
+}
+
+.cs-total-orders{
+	text-transform: uppercase;
+font-size: 15px;
+float: left;
+width: 50%;
+padding-top:4px;
+}
+
+.cs-tot-search{
+	float: left;
+width: 50%;
+text-align: right;
+}
+
+
+
+
+
+
+ 
+ 
+/*****************************************Miscellaneous***************************/
+
+/***************Feedback Extension notification***********/
+.success-msg{
+	text-align:center;
+	color:green;
+	font-size:18px;
+	
+}
+
+.fail-msg{
+	text-align:center;
+	color:#DE1E32;
+	font-size:18px;
+}
+
+.cs-input-disable{
+	  pointer-events: none;
+  cursor: default;
+}
+
+/**************************** All orders Search **********/
+
+#cs-search-box{
+	
+	width: 250px !important;
+background: url("images/search.png") no-repeat scroll right center #FFF;
+padding: 0px 30px 0px 4px !important;
+border: 1px solid #DE1E32;
+background-size: 30px 30px;
+	
+}
+
+/*************************** CSS Transition for arrow ***********************/
+
+.cstrans{
+	-webkit-transition: 0.5s;
+	transition:0.5s;
+}
+

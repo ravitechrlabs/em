@@ -1,0 +1,178 @@
+<?php /****** Template file that returns the order after it is searched ********/ ?> 
+     
+     <div class="ordered-items">
+     <?php 
+	  	$ordnum=Mage::registry('ordnum');
+	  	$csemail=Mage::registry('csemail');
+	  ?>
+     <?php $orders = $this->getOrders($ordnum,$csemail); 
+			if($orders->getSize()==0){
+			?>	
+			
+			<?php	
+				}
+				
+			else{
+			
+			
+			foreach($orders as $order)
+			{
+		?>
+        		
+                		
+             <div class="order" id="csorder">
+       
+                <?php
+                $order_details = $this->getOrderDetails($order->getRealOrderId()); 
+				 $itemsExcludingConfigurables = array();
+				foreach ($order_details->getAllItems() as $item):
+				
+				$product = $this->getProducts($item->getProductId());
+				if($product->getTypeId() != "configurable"){
+				?>
+                <div class="order-item-detail">
+                
+                	<div class="order-item-image">
+                    	<img src=" <?php echo Mage::helper('catalog/image')->init($product, 'thumbnail')->resize(50); ?> " />
+                	</div>
+                    
+                    <div class="order-item-right">
+                    	<div class="order-item-name"><?php echo $product->getName();?></div>
+                    
+                    	<div class="order-item-price">
+                    		<p> <?php echo Mage::helper('core')->currency($product->getPrice(),true,false); ?> </p>
+                    	</div>
+                    </div>
+                    
+                </div>
+                
+                <div class="order-number">
+                	
+                    <div class="order-head">
+                		<h6>Order Number</h6>
+                    </div>
+                    
+                    <div class="order-number-content"><?php echo $order->getRealOrderId();?></div>
+                    
+                </div>
+                
+                <div class="ordered-date">
+                
+                	<div class="order-head">
+                		<h6>Ordered date</h6>
+                    </div>
+                    
+                	<?php $fromDate = date("d M Y", strtotime($order->getCreatedAtStoreDate())); ?>
+                    
+                    <div class="ordered-date-content">
+                    	<p> <?php echo $fromDate; ?> </p>
+                    </div>
+                    
+                </div>
+                
+                <div class="delivered-date">
+                
+                	<div class="order-head">
+                		<h6>Delivered On</h6>
+                    </div>
+                    
+                	<?php $fromDate = date("d M Y", strtotime($order->getCreatedAtStoreDate())); ?>
+                    
+                    <div class="delivered-date-content">
+                    	<p> <?php echo $fromDate;?> </p>
+                    </div>
+                    
+                </div>
+                <?php $class=$this->getStatusColor($order->getStatus());?> 
+                <div class="order-status">
+                	<h4 class=" <?php echo $class;?>"> <?php echo $order->getStatus(); ?> </h4>
+                </div>
+             
+             
+             </div>
+             
+              <div class="order-dropdown" id="order-dropdown">
+              
+              	<div>
+                	<div class="track-order-dropdown <?php if(strcasecmp($order->getStatus(), 'Pending') == 0){ echo ' csdisable';} ?>">
+                    	<div class="track-wrapper"><a href="#" ><span class="track-icon"></span><span class="track-text">Track Order</span></a></div>
+                    </div>
+                    
+                    <div class="cancel-order-dropdown <?php if(strcasecmp($order->getStatus(), 'Completed') == 0){ echo ' csdisable';} ?>">
+                    	<div class="cancel-wrapper"><a class="fancybox fancybox.ajax" href="<?php  echo $this->getUrl('customerservice/index/cancelorder');?>" ><span class="cancel-icon"></span><span class="cancel-text">Cancel Order</span></a></div>
+                    </div>
+                    
+                    <div class="return-order-dropdown <?php if(strcasecmp($order->getStatus(), 'Pending') == 0){ echo ' csdisable';} ?>">
+                    	<div class="return-wrapper"><a class="fancybox fancybox.ajax" href="<?php  echo $this->getUrl('customerservice/index/returnorder');?>" ><span class="return-icon"></span><span class="return-text">Return Order</span></a></div>
+                    </div>
+                    
+                    <div class="invoice-order-dropdown <?php if(strcasecmp($order->getStatus(), 'Pending') == 0){ echo ' csdisable';} ?>">
+                    	<div class="invoice-wrapper"><a href="#" ><span class="invoice-icon"></span><span class="invoice-text">Email Invoice</span></a></div>
+                    </div>
+                    
+                    <div class="email-us-dropdown">
+                    	<div class="email-wrapper"><a class="fancybox fancybox.ajax" href="<?php  echo $this->getUrl('customerservice/index/fetchcsemail');?>" ><span class="email-icon"></span><span  class="email-text">Email Us</span></a></div>
+                    </div>
+                    
+                </div>
+                
+              </div>  
+                
+                
+            
+        
+      <?php  
+				}
+			endforeach;	
+			}
+			}
+	?>
+
+    
+       </div>
+
+<div id="cs-return" >
+	<a href="#"><button id="csreturn" class="cs-red">SELECT ANOTHER ORDER</button></a>
+</div>
+
+<script>
+
+
+
+ if ($$('.order-number-content')[0] && $$('.order-item-name')[0]) {
+        car.ordernum = $$('.order-number-content')[0].innerHTML;
+        car.itemname = $$('.order-item-name')[0].innerHTML;
+    }
+
+$('csreturn').observe('click', function(){
+ 
+ new Ajax.Request('<?php  echo $this->getUrl('customerservice/index/fetchsearch');?>', {
+  method: 'get',
+ 	  onCreate : startLoading,
+     onComplete : stopLoading,
+  onSuccess: successFunc,
+  onFailure: failureFunc
+
+});
+})
+
+ function successFunc(response){
+   
+     if (200 == response.status){
+       // alert("Call is success");
+    }
+    var container = $('not-logged-in');
+    var content = response.responseText;
+    container.update(content);
+}
+
+function failureFunc(response){
+
+    alert("Please refresh the page and try again" );
+}
+
+ 
+</script>
+
+
+

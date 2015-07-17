@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+	<reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="head">
+		 	<action method="addItem"><type>skin_css</type><name>homepage/homepage.css</name><params/></action>
+			<action method="addItem"><type>skin_css</type><name>homepage/jquery.bxslider.css</name><params/></action>
+
+			<action method="addItem"><type>skin_js</type><name>homepage/homepage.js</name><params/></action>
+			
+			<action method="addItem"><type>skin_js</type><name>homepage/jquery.min.js</name><params/></action>
+
+			
+			<action method="removeItem"><type>skin_js</type><name>homepage/jssor.js</name><params/></action>
+			<action method="removeItem"><type>skin_js</type><name>homepage/jssor.slider.js</name><params/></action>
+			<action method="removeItem"><type>skin_js</type><name>homepage/jquery.bxslider.min.js</name><params/></action>
+			<action method="addItem"><type>skin_js</type><name>homepage/jquery.bxslider.js</name><params/></action>
+			
+
+
+			
+
+
+
+
+
+
+
+			
+			
+			
+		</reference> 
+    </default>
+	<!--<cms_index_index>	
+		<reference name="content">
+			<block type="homepage/homepage" name="homepage" template="homepage/homepage.phtml" before="-" />
+        </reference>
+	</cms_index_index>
+-->	
+    <homepage_index_index>
+        <reference name="content">
+			<block type="homepage/homepage" name="homepage" template="homepage/homepage.phtml" />
+        </reference>
+    </homepage_index_index>
+</layout> 

@@ -1,0 +1,213 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * FAQ accordion for Magento
+ *
+ * Website: www.hiremagento.com 
+ * Email: hiremagento@gmail.com
+ *
+/* @var $this HM_Faq_Block_Frontend_List */
+?>
+
+<?php
+$breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
+// add first item with link
+$breadcrumbs->addCrumb(
+'home',
+ array(
+'label'=>$this->__('Home'),
+'title'=>$this->__('Home'), 
+'link'=>Mage::getBaseUrl()
+)
+);
+// add second item without link
+$breadcrumbs->addCrumb(
+'FAQ',
+ array(
+'label'=>$this->__('HELP & FAQ'),
+'title'=>$this->__('FAQ')
+)
+);
+echo $breadcrumbs->toHtml();
+?>
+<div class="page-title">
+	<h3><?php echo $this->__('HELP & FAQ'); ?></h3>
+</div>
+<?php if ($this->hasFaq()): ?>
+<?php if ($this->getCategoryCollection()) : ?>
+
+    <?php foreach ($this->getCategoryCollection() as $category) : ?>
+    <!--------------Main Part-------------------->
+    <div class="faq-main">
+    <!------------------Category----------------->
+    <div class="faq-category-header">
+        <h3><?php echo $this->htmlEscape($category->getName()); ?></h3>
+    </div>
+    
+    <!------------------------Question and Answer-------------------------------->
+    <div class="faq-qa">
+    <?php foreach ($this->getItemCollectionByCategory($category) as $item) : ?>
+    
+        
+        
+        <ul class="faq-list">
+            <li class="jinx"  id="faq-que-<?php echo $item->getId() ?>" onclick="slide('faq-que-<?php echo $item->getId() ?>','faq-ans-<?php echo $item->getId() ?>')">
+            	
+                	
+                    	
+		<?php echo $this->htmlEscape($item->getQuestion()) ?></li>
+
+	<li id="faq-ans-<?php echo $item->getId() ?>" style="display:none;">
+	<?php $_process = Mage::helper('cms')->getBlockTemplateProcessor();?>
+    <?php echo $_process->filter($item->getAnswer()); ?>
+                    
+            </li>
+            
+            </ul>
+        
+        <?php endforeach; ?>
+           </div>
+        
+        <!------------------------End of Q&A---------------->
+        
+        	<div class="faq-buttons-block">
+            	
+                <div class="faq-buttons">
+            	
+            	
+            		<?php
+             			$i = 0;
+                
+                		$collection = Mage::getModel('hm_faq/object')->getCollection()->addFieldToFilter('category_id',$category->getId());
+						$collection->setOrder('sort_order', 'ASC');
+                		$collection->setPageSize(5);
+                		$collection->setCurPage(2);
+                		$size = $collection->getSize();
+                		$cnt = count($collection);
+                		foreach ($collection as $button) {
+                    		$i = $i+1;
+                    
+                
+            		?>
+                    <a id="<?php echo $button->getUrlId(); ?>" href="<?php echo $button->getUrlLink(); ?>" >
+                		<div  class="faq-white-button">
+                		
+<!--                        	<div class="faq-inner">
+-->                	                
+               						<h3 class="faq-button-label"><?php echo $button->getUrlLabel(); ?></h3><span class="faq-icon">></span>
+                       
+                        	<!--</div>
+-->                            
+                       </div>
+                    </a>
+                
+                
+                
+                
+                <?php echo '<br>';} ?>
+                
+               </div>
+
+           </div>        
+        
+        
+        
+        </div>
+    <!--------------------------End of Main--------------------------------->
+    <?php endforeach; ?>
+    
+ <?php endif; ?>
+ <?php endif; ?>
+ 
+
+ <script type="text/javascript">
+   function slide(element1, element2){
+       new Effect.toggle(element2,'blind', {duration:0.5});
+	    if( $(element1).hasClassName("active") ){
+		  $(element1).removeClassName("active");
+	   }
+	   else{
+		   $(element1).addClassName("active");
+	   }
+   }
+</script>
+
+ 
+
+
+
+
+<?php /*?><div class="page-title">
+	<h1><?php echo $this->__('FAQ List'); ?></h1>
+</div>
+
+<?php if ($this->hasFaq()): ?>
+<?php if ($this->getCategoryCollection()) : ?>
+<dl class="faq-list">
+    <?php foreach ($this->getCategoryCollection() as $category) : ?>
+        <dt><?php echo $this->htmlEscape($category->getName()); ?></dt><dd><ul class="faq-list">
+        <?php foreach ($this->getItemCollectionByCategory($category) as $item) : ?>
+            <li>
+                <a href="#faq-item-<?php echo $item->getId() ?>">
+                    <?php echo $this->htmlEscape($item->getQuestion()); ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+        </ul></dd>
+    <?php endforeach; ?>
+</dl>
+<?php else : ?>
+<ul class="faq-list">
+    <?php foreach ($this->getFaqCollection() as $faqItem): ?>
+    <li>
+        <a href="#faq-item-<?php echo $faqItem->getId() ?>">
+            <?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
+        </a>
+    </li>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>
+
+<dl class="faq-items">
+	<?php foreach ($this->getFaqCollection() as $faqItem): ?>
+	<dt id="faq-que-<?php echo $faqItem->getId() ?>" onclick="slide('faq-que-<?php echo $faqItem->getId() ?>','faq-ans-<?php echo $faqItem->getId() ?>')">
+		<?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
+	</dt>
+	<dd id="faq-ans-<?php echo $faqItem->getId() ?>" style="display:none;">
+	<?php $_process = Mage::helper('cms')->getBlockTemplateProcessor();?>
+    <?php echo $_process->filter($faqItem->getAnswer()); ?>
+	</dd>
+	<?php endforeach; ?>
+</dl>
+<?php else: ?>
+<p class="faq-items"><?php echo $this->__('There are no FAQ items at the moment.') ?></p>
+<?php endif; ?>
+<script type="text/javascript">
+   function slide(element1, element2){
+       new Effect.toggle(element2,'Slide', {duration:1});
+	    if( $(element1).hasClassName("active") ){
+		  $(element1).removeClassName("active");
+	   }
+	   else{
+		   $(element1).addClassName("active");
+	   }
+   }
+</script>
+<?php */?>

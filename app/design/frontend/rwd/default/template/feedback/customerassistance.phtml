@@ -1,0 +1,88 @@
+
+<?php 
+if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+$current_user_mail= Mage::getSingleton('customer/session')->getCustomer()->getEmail();
+$current_user_name= Mage::getSingleton('customer/session')->getCustomer()->getName();
+$current_user_phone= Mage::getSingleton('customer/session')->getCustomer()->getPrimaryBillingAddress()->getTelephone();
+}
+?>
+<div id="box" class="box simple_contact">
+ 
+<form id="bikefixr_customerassistance_form" name="bikefixr_customerassistance_form" action="<?php echo $this->getUrl('feedback/index/sendemailCustomerAssistance') ?>" method="post">
+    <fieldset class="group-select">
+        <ul>
+        <li>
+                    <div class="input-box">
+                    <label for="issue">My Issue:<span class="required"></span></label><br />
+ 
+                    <input class="cs-input-disable" name="issue" id="issue"  title="issue" value=""  type="text" />
+                </div>
+ 
+                <div class="input-box">
+                    <label for="email">E-mail: <span class=""></span></label><br />
+            <input class="input-text validate-email required-entry <?php if($current_user_mail){echo ' cs-input-disable';} ?>" type="email"  name="email" value="<?php echo $current_user_mail ?>" />
+                </div>
+                
+                <div class="input-box">
+            <label for="username">Full Name: <span></span></label>
+            <br />
+            <input <?php if($current_user_name){echo 'class="cs-input-disable"';} ?> type="text" name="username" value="<?php echo $current_user_name ?>" />
+        </div>
+ 
+                <div class="clear"></div>
+ 
+                <div class="input-box">
+           &nbsp;        <label for="user-msg">Message</label><br />
+ 
+                    <textarea name="user-msg" id="user-msg" title="user-msg"  style="height:100px;" cols="50" rows="3"></textarea>
+                </div>
+                </li>
+                </ul>
+    </fieldset>
+    <div class="button-set">
+        <p class="required">* Required Fields</p>
+        <button class="form-button cs-red" type="submit"><span>Submit</span></button>
+ 
+    </div>
+</form>
+ 
+</div>
+<script>
+
+myform=new VarienForm('bikefixr_customerassistance_form',false);
+
+var parentIssue = document.getElementById("issue");
+parentIssue.value = parent.car.otherissue;
+
+Event.observe('bikefixr_customerassistance_form', 'submit', function(event) {
+	
+	results=myform.validator.validate();
+	if(results){
+    $('bikefixr_customerassistance_form').request({
+        onFailure:failureFunc,
+        onSuccess:successFunc
+    });
+    Event.stop(event); // stop the form from submitting
+	}
+});
+
+ function successFunc(response){
+   
+     if (200 == response.status){
+        //alert("Call is success");
+    }
+    var container = $('box');
+    var content = response.responseText; 
+    container.update(content);
+	//alert('Mail sent');
+	//jQuery.fancybox.close();
+}
+
+function failureFunc(response){
+
+    var container = $('box');
+    var content = response.responseText;
+    container.update(content);
+}
+
+</script>

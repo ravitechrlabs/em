@@ -1,0 +1,6 @@
+<div>
+		<?php
+		Mage::getSingleton('customer/session')->getUrl('customerservice/index/');
+		echo $this->getLayout()->createBlock('customer/form_login')->setTemplate('persistent/customer/form/login.phtml')->toHtml();
+		?>
+</div>

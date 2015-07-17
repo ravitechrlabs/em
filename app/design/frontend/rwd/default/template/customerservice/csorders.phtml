@@ -1,0 +1,228 @@
+<?php /******   View All Orders template file *********/ ?>
+
+
+<?php
+
+$orders = $this->getOrders();
+?>
+
+<div id="all-csorders-header">
+	<div class="cs-total-orders"><?php echo 'Total '. $orders->getSize() . ' orders'; ?></div>
+    <div class="cs-tot-search"><input type="search" id="cs-search-box" /></div>
+    <div id="test"></div>
+</div>
+
+
+
+<div class="ordered-items">
+
+<table id="table_id" class="display">
+
+<thead>
+	<tr> 
+    	<th></th>
+		<th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+</thead>
+
+<tbody>
+<?php
+foreach($orders as $order)
+			{
+				
+		?>
+        		
+                		
+             <tr class="order-popup" data-orderno="<?php echo $order->getRealOrderId(); ?>">
+              
+             
+              	
+                <td class="order-radio-popup">
+                	<input type="radio" name="radio" class="" id="<?php echo $order->getRealOrderId(); ?>" >
+                </td>
+               
+               
+                <?php
+                $order_details = $this->getOrderDetails($order->getRealOrderId()); 
+				 $itemsExcludingConfigurables = array();
+				foreach ($order_details->getAllItems() as $item):
+				
+				$product = $this->getProducts($item->getProductId());
+				if($product->getTypeId() != "configurable"){
+				?>
+                
+                <td class="order-item-detail-popup">
+                
+                	<div class="order-item-image-popup">
+                    	<img src=" <?php echo Mage::helper('catalog/image')->init($product, 'thumbnail')->resize(50); ?> ">
+                	</div>
+                    
+                    <div class="order-item-right-popup">
+                    	<div class="order-item-name-popup"><?php echo $product->getName();?></div>
+                    
+                    	<div class="order-item-price-popup">
+                    		<p> <?php echo Mage::helper('core')->currency($product->getPrice(),true,false); ?> </p>
+                    	</div>
+                    </div>
+                    
+                </td>
+                
+                
+                <td class="order-number-popup">
+                	
+                    <div class="order-head-popup">
+                		<h6>Order Number</h6>
+                    </div>
+                    
+                    <div class="order-number-content-popup"><?php echo $order->getRealOrderId();?></div>
+                    
+                </td>
+                
+                
+                <td class="ordered-date-popup">
+                
+                	<div class="order-head-popup">
+                		<h6>Ordered date</h6>
+                    </div>
+                    
+                	<?php $fromDate = date("d M Y", strtotime($order->getCreatedAtStoreDate())); ?>
+                    
+                    <div class="ordered-date-content-popup">
+                    	<p> <?php echo $fromDate; ?> </p>
+                    </div>
+                    
+                </td>
+               
+                
+                <td class="delivered-date-popup">
+                
+                	<div class="order-head-popup">
+                		<h6>Delivered On</h6>
+                    </div>
+                    
+                	<?php $fromDate = date("d M Y", strtotime($order->getCreatedAtStoreDate())); ?>
+                    
+                    <div class="delivered-date-content-popup">
+                    	<p> <?php echo $fromDate;?> </p>
+                    </div>
+                    
+                </td>
+                <?php $class=$this->getStatusColor($order->getStatus());?> 
+                <td class="order-status-popup">
+                	<h4 class=" <?php echo $class;?>"> <?php echo $order->getStatus(); ?> </h4>
+                </td>
+                
+             
+             </tr>
+                        
+        
+      <?php  
+				}
+			endforeach;	
+			}
+	?>
+    
+    </tbody>
+    </table>
+    
+       </div>
+
+      
+ 
+
+  
+  
+  <script>
+  var selorder = document.getElementsByClassName('order-popup');
+  
+ jQuery(document).ready( function () {   
+ 
+ var table = jQuery('#table_id').DataTable(
+{
+	paging: false,
+	searching: true,
+	scrollY : "200px",
+	//scrollCollapse : true,
+	dom: 'lrtip',
+	oLanguage: {
+      sInfo: "Got a total of _TOTAL_ orders to show (_START_ to _END_)",
+	  sInfoFiltered: " - filtering from total _MAX_ orders",
+	  sZeroRecords: "No matching orders found!",
+	  sEmptyTable: "Not logged in. Please refresh the page"
+    }
+		
+}
+	
+ );
+ 
+
+jQuery('#cs-search-box').keyup(function(){
+      table.search(jQuery(this).val()).draw() ;
+}); 
+ 
+ 
+
+ 
+ } );
+  
+ 
+ if ($$('.order-number-content-popup')[0] && $$('.order-item-name-popup')[0]) {
+     car.ordernum = $$('.order-number-content-popup')[0].innerHTML;
+     car.itemname = $$('.order-item-name-popup')[0].innerHTML;
+ }
+
+ for (var m = 0; m < $(selorder).length; m++) {
+
+     $(selorder)[m].observe('click', function() {
+         fire(this);
+     });
+ }
+
+
+
+ function fire(n) {
+     var ordnum = n.getAttribute("data-orderno");
+	var radio = document.getElementById(ordnum);
+	 radio.checked = true;
+	 
+
+     new Ajax.Request('<?php echo $this->getUrl('customerservice/index/fetchrecent');?>', {
+             method: 'get',
+             parameters: {
+                 ordnum
+
+
+             },
+             onCreate: startLoading,
+             onComplete: stopLoading,
+             onSuccess: successFunction,
+             onFailure: failureFunction
+                
+         });
+ 
+
+ }
+
+ function successFunction(response) {
+
+     if (200 == response.status) {
+      
+     }
+     var container = $('logged-in');
+     var content = response.responseText;
+     container.update(content);
+	    jQuery.fancybox.close();
+ }
+
+ function failureFunction(response) {
+
+     alert("Please try again");
+	    jQuery.fancybox.close();
+
+ }
+
+ </script>   

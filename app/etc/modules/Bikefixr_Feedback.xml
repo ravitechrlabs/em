@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bikefixr_Feedback>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Bikefixr_Feedback>
+    </modules>
+</config> 

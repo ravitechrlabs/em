@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <example_index_index>
+        <reference name="content">
+            <block type="example/example" name="example" template="example/example.phtml" />
+        </reference>
+    </example_index_index>
+</layout> 

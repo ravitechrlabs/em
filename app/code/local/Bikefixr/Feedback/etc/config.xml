@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Bikefixr_Feedback>
+            <version>0.1.0</version>
+        </Bikefixr_Feedback>
+    </modules>
+    <frontend>
+        <routers>
+            <feedback>
+                <use>standard</use>
+                <args>
+                    <module>Bikefixr_Feedback</module>
+                    <frontName>feedback</frontName>
+                </args>
+            </feedback>
+        </routers>
+        <layout>
+            <updates>
+                <feedback>
+                    <file>feedback.xml</file>
+                </feedback>
+            </updates>
+        </layout>
+    </frontend>
+</config>

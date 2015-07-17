@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <feedback_index_orderassistance>
+        <reference name="content">
+            <block type="feedback/orderassistance" name="orderassistance" template="feedback/orderassistance.phtml" />
+        </reference>
+    </feedback_index_orderassistance>
+	
+	<feedback_index_customerassistance>
+      <reference name="content">
+            <block type="feedback/customerassistance" name="customerassistance" output="toHtml" template="feedback/customerassistance.phtml" />
+    </reference>
+    </feedback_index_customerassistance>
+	
+	<feedback_index_cancelorder>
+      <reference name="content">
+            <block type="feedback/cancelorder" name="cancelorder" output="toHtml" template="feedback/cancelorder.phtml" />
+			<action method="addItem"><type>skin_css</type><name>customerservice/customerservice.css</name><params/></action>
+    </reference>
+    </feedback_index_cancelorder>
+	
+	<feedback_index_returnorder>
+      <reference name="content">
+            <block type="feedback/returnorder" name="ReturnOrder" output="toHtml" template="feedback/returnorder.phtml" />
+    </reference>
+    </feedback_index_returnorder>
+	
+</layout> 

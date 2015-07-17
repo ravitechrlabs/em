@@ -1,0 +1,525 @@
+<?php /*** Main template file ******/ ?>
+
+
+<?php
+$breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
+
+$breadcrumbs->addCrumb(
+'home',
+ array(
+'label'=>$this->__('Home'),
+'title'=>$this->__('Home'), 
+'link'=>Mage::getBaseUrl()
+)
+);
+
+$breadcrumbs->addCrumb(
+'customerservice',
+ array(
+'label'=>$this->__('CUSTOMER CARE'),
+'title'=>$this->__('Customer Care')
+)
+);
+echo $breadcrumbs->toHtml();
+?>
+
+
+
+<div class="cswrapper">
+
+ <div class="csheader">
+            	<h3>Customer Care</h3>
+ </div>
+            
+            
+  <div id="tabs">
+  <?php 
+  
+  $collection = $this->getCscollection();
+				$orderItems = array();
+				$otherItems = array();
+                foreach ($collection as $item) {
+					
+					$cstab = $item->getCstab();
+					if ($cstab == 1)
+					{
+						
+						$orderItems[]= $item;
+					}
+					else
+					{
+						$otherItems[]= $item;
+						
+					}
+					
+				}
+				
+		$ordercnt = 1;
+		$othercnt = 1;
+			
+	
+?>
+
+<!------------------------------------------------------------------- TAB ONE --------------------------------------------------------->
+	
+	<div id="t1" class="my_tab">
+		<!--<h5 class="tab_title">Tab 1</h5>-->
+      	<div class="step-1">
+          
+        	<div class="csquestion">
+            	<h3>1. What seems to be the issue?</h3>
+            </div>
+            
+			<div id="chosen-order-issue">
+            
+            	<div id="chosen-order-parent">
+                </div>
+                
+                <div id="chosen-order-child">
+                </div>
+                
+                <span class="chosen-icon">
+                </span>
+                
+            </div>
+            
+            
+        	<div class="issues" id="order-issue">
+        		<div class="cscategory">
+        			<?php foreach( $orderItems as $orderItem )
+						{ ?>
+						
+               
+                    
+							<?php	echo '<div class="csdropdown order-parent';if ($ordercnt==1){ echo ' selected';} echo '" onclick="drop(this);" onmouseover="lead(this);" data-faq="' . str_replace(" ","_",$orderItem->getCscategory()). '" ><span class="cs-parent-name">'. $orderItem->getCscategory() .'</span><span class="cs-parent-icon"></span></div>'; ?>
+                
+               		<?php  
+			   				$children = $this->getChildcollection($orderItem->getCustomerserviceId());	
+								
+						?>	
+
+							<ul id="<?php echo $orderItem->getCustomerserviceId(); ?>" class="subIssues" style="display:none;" >	
+			   			 
+						<?php
+			   				foreach($children as $child)
+							{
+						
+									echo '<li class="cschildren order-children"  onmouseover="lead(this);" data-faq="'. str_replace(" ","_",$child->getChildTitle()) . '">' . $child->getChildTitle() . '</li>';
+							}
+			   
+			   		$ordercnt++;
+			   
+			  		 ?>
+                     		</ul>
+					
+			
+			<?php } ?>
+        	</div>	
+       </div> 
+       
+       
+       
+       
+<!------------------------------------------------------------------------------ FAQ TAB ONE------------------------------------------------------------>
+	   <div class="faq-section" id="order-faq">
+       		
+            <div class="faq-header">
+            	<h5><a href="http://google.com">FREQUENTLY ASKED QUESTIONS (FAQ)</a></h5>
+            </div>
+  			
+            <div class="faq-wrapper">
+  			
+  
+  	
+   			 <?php  foreach( $orderItems as $orderItem ) { ?>
+						
+          			<?php      	
+		  
+		  		 			$faqcatid = $orderItem->getParentfaqcat();
+				 			$children = $this->getChildcollection($orderItem->getCustomerserviceId());
+				 			$faqcollection =  $this->getFaqcollection($faqcatid);			 
+                			
+					?>
+			
+						<div class="parent-faq" id="<?php echo str_replace(" ","_",$orderItem->getCscategory()) ;?>"  >
+		  				
+                        
+                	<?php      
+					  		foreach($faqcollection as $qa)
+							
+							{  ?>
+							
+                            	 <div class="qa-wrapper">
+                                 
+                            		<div class="faq-que">
+                            			<?php echo 'Q. <strong>' . $qa->getQuestion() . '</strong>'; ?>
+                            		</div>
+                            
+                           	 		<div class="faq-ans">
+                            			<?php  echo $qa->getAnswer(); ?>
+                            		</div>
+                                    
+                                 </div>
+                            
+                          <?php  }   ?>
+                          
+                    	</div>
+                   
+                   <?php    
+				   
+				   			foreach($children as $jack)
+				 			{   
+				 				$childfaqid = $jack->getFaqCategory();
+								$childtitle = $jack->getChildTitle();
+							
+								$childfaqcollection = $this->getFaqcollection($childfaqid);
+							
+					?>
+                    		<div  class="child-faq" id="<?php echo str_replace(" ","_",$jack->getChildTitle()); ?>">
+                            
+                            <?php
+                         	foreach($childfaqcollection as $childqa)
+							{  ?>
+								
+                                <div class="qa-wrapper">
+                                
+                            		<div class="child-faq-que">
+                            			<?php echo 'Q. <strong>' . $childqa->getQuestion() . '</strong>'; ?>
+                            		</div>
+                            
+                            		<div class="child-faq-ans">
+                            			<?php echo $childqa->getAnswer(); ?>
+                            		</div>
+                                    
+								</div>
+                            
+                            
+                       <?php  }   ?>
+		  
+		  					</div>
+		 
+                    <?php  } ?>
+				 
+                 
+					
+			
+		<?php } ?>
+        
+        </div>
+        
+    </div>
+       
+<!-------------------------------------------------------------------------------- END OF FAQ TAB ONE ----------------------------------------------->		
+
+</div>
+ 
+<!-------------------------------------------------------------END OF STEP ONE----------------------------------------------------------------> 
+
+
+
+     
+<div class="step-2">
+
+	<div class="csquestion">
+            <h3>2. Select an Item you need assistance with</h3>
+     </div>
+     
+    <?php if(Mage::getSingleton('customer/session')->isLoggedIn()) {?>
+     
+         <h3>Recent Orders</h3>
+    <div id="logged-in" class="csdisable">
+    
+ </div>   
+ <script> 
+
+document.observe('dom:loaded', launch('<?php echo $this->getUrl('customerservice/index/fetchrecent');?>'));
+
+</script>
+            
+
+<?php } else { ?>	
+
+<div id="not-logged-in" class="csdisable">
+ </div> 
+
+<script> 
+   
+document.observe('dom:loaded', launchSearch('<?php  echo $this->getUrl('customerservice/index/fetchsearch');?>'));
+alert('Hello');	
+</script>
+     
+
+ <?php }?>
+ 
+ 
+        
+	</div>
+  
+  </div>
+<!--------------------------------------------------------- END of TAB ONE--------------------------------------------------------->    
+
+
+ 
+  
+  
+<!--------------------------------------------------------- TAB TWO ---------------------------------------------------------------->
+
+   
+	<div id="t2" class="my_tab">
+		<!--<h5 class="tab_title">Tab 2</h5>-->
+      <div class="step-1">
+      
+        <div class="csquestion">
+            	<h3>1. What seems to be the issue?</h3>
+            </div>
+            
+        
+        <div id="chosen-other-issue">
+            
+            	<div id="chosen-other-parent">
+                </div>
+                
+                <div id="chosen-other-child">
+                </div>
+                
+                <span class="chosen-icon">
+                </span>
+                
+         </div>
+            
+		<div class="issues" id="other-issue">
+        
+			<div class="cscategory">
+        
+         <?php foreach( $otherItems as $otherItem )
+		{?>
+			
+                	
+                    
+				<?php	echo '<div class="csdropdown other-parent'; if ($othercnt==1){ echo ' selected';} echo '" onclick="drop(this);" onmouseover="other(this);" data-faq="' . str_replace(" ","_",$otherItem->getCscategory()). '"><span class="cs-parent-name">' . $otherItem->getCscategory() .'</span><span class="cs-parent-icon"></span></div>'; ?>
+                
+                 <?php  
+			   			$children = $this->getChildcollection($otherItem->getCustomerserviceId()) ;		
+			   		?>
+                    
+                    	<ul id="<?php echo $otherItem->getCustomerserviceId(); ?>" class="subIssues" style="display:none;" >	
+                    
+                    
+                    <?php	
+			   			foreach($children as $child)
+						{
+							echo '<li class="cschildren other-children"  onmouseover="other(this);" data-faq="'. str_replace(" ","_",$child->getChildTitle()) . '">' . $child->getChildTitle() . '</li>';
+							}
+			   			$othercnt++;
+			   
+			   		?>
+					
+					</ul>
+					
+		<?php } ?>
+        
+        
+        	</div>
+            
+		</div>
+        
+        
+        
+        
+<!---------------------------------------------------------------- FAQ TAB TWO ------------------------------------------------------------------>
+         <div class="faq-section" id="other-faq">
+         
+         			<div class="faq-header">
+            			<h5><a href="http://google.com">FREQUENTLY ASKED QUESTIONS (FAQ)</a></h5>
+            		</div>
+  			
+            		<div class="faq-wrapper">
+         
+            			<?php foreach( $otherItems as $otherItem ) { ?>
+						
+          					<?php      	
+		  
+		  		 					$faqcatid = $otherItem->getParentfaqcat();
+				 					$children = $this->getChildcollection($otherItem->getCustomerserviceId());	
+			 						$faqcollection =  $this->getFaqcollection($faqcatid)	;  
+								
+								?>
+            
+            
+            				<div class="parent-faq" id="<?php echo str_replace(" ","_",$otherItem->getCscategory()); ?>"  >
+            		
+						<?php
+		  						foreach($faqcollection as $qa)
+							{  ?>
+							
+                             		<div class="qa-wrapper">
+                            	
+                            			<div class="faq-que">
+                            				<?php echo 'Q. <strong>' . $qa->getQuestion() . '</strong>'; ?>
+                            			</div>
+                            
+                            			<div class="faq-ans-other">
+                            				<?php echo $qa->getAnswer(); ?>
+                            			</div>
+                                
+							 		</div>
+                            
+                            
+                          <?php  }   ?>
+                          
+                          		</div>
+		  
+		  					<?php
+		 
+                     				foreach($children as $jill)
+				 					{   
+				 						$childfaqid = $jill->getFaqCategory();
+										$childtitle = $jill->getChildTitle();
+							
+										$childfaqcollection = $this->getFaqcollection($childfaqid)	;
+							
+								?>
+                						<div class="child-faq" id="<?php echo str_replace(" ","_",$jill->getChildTitle());?>">
+                							
+											<?php
+                         							foreach($childfaqcollection as $childqa)
+											{  ?>
+							
+                            	 				<div class="qa-wrapper">
+                                 
+                            						<div class="child-faq-que">
+                                						<?php echo 'Q. <strong>' . $childqa->getQuestion() . '</strong>'; ?>
+                            						</div>
+                            
+                            						<div class="child-faq-ans-other">
+                            							<?php echo $childqa->getAnswer(); ?>
+                            						</div>
+                                    
+								  				</div>
+                            
+                            				<?php  }   ?>
+		  
+							
+                            			</div>
+                            
+                         	 <?php  }   ?>
+				 
+                 
+					
+			
+				<?php  } ?>
+        
+        
+        
+       			</div>
+        
+        
+        
+       </div>
+        
+   
+<!---------------------------------------------------- END OF FAQ TAB TWO ------------------------------------------------->		
+
+
+
+	</div>
+
+
+
+	<div class="step-2">
+
+		<div class="csquestion">
+            <h3>2. Get Assistance</h3>
+     	</div>
+        
+        <div class="csbutton csdisable" id="other-email">
+        	
+        	<div>
+        		<a class="fancybox fancybox.ajax" id="csemaillink" href="<?php  echo $this->getUrl('customerservice/index/fetchotheremail'); ?>" ><div class="other-button">EMAIL US</div></a> 
+            </div>
+          	
+        </div>
+     
+	</div>
+
+
+
+
+  </div>
+
+    
+ <!--------------------------------------------------- END of TAB TWO-------------------------------------------------------->   
+    
+  
+
+
+
+</div>
+  
+ <!------------------------------------------------------End of tabs div-----------------------------------------> 
+ 
+ <div class="csfooter">
+
+	<div class="cs-contact">
+    	
+        <div id="cs-call-us">
+        	<p>Call us</p>
+            
+            <p>We are available 24 hours a day.
+            (0124) 6150000 or 1800 208 9898
+            </p>
+            
+            <p>
+            	Need assistance in buying?
+                Call our product experts at 1800 1080 1800
+            </p>
+            
+        </div>
+        
+        <div id="cs-mail-us">
+        
+        	<p>Mail us</p>
+            
+            <p>
+            	Bikefixr Private Limited,
+                105 3F, Chamiers Rd
+                RA Puram
+                Chennai - 600 028
+                India.
+            </p>
+            
+        </div>
+        
+        <div id="cs-office">
+        
+        	<p>Office</p>
+            
+        	<p>
+            	Bikefixr Private Limited,
+                105 3F, Chamiers Road
+                RA Puram
+                Chennai - 600 028
+                India.
+            </p>
+        </div>
+    
+    </div>
+    
+ </div>
+ 
+
+
+</div>
+<!---------------------------------------------------- END OF WRAPPER ----------------------------------------------------------->
+
+
+
+<script>
+
+var MyTabs= new mt('tabs','div.my_tab');
+   MyTabs.addTab('t1','Need assistance with existing order');
+  MyTabs.addTab('t2','Any other assistance?');
+   MyTabs.makeActive('t1');
+   
+</script>
+ 
