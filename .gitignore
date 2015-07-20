@@ -1,0 +1,13 @@
+/var/*
+/app/etc/local.xml
+/media/*
+!/media/wysiwyg/
+
+/media/catalog/*
+!/media/catalog/category/
+
+afterimport/TVS-4.csv
+
+afterimport/tvs-4uploadtest.csv
+
+afterimport/index.php
